@@ -196,5 +196,9 @@ router.get('/search_shops', function (req, res) {
 })
 
 //vivo商城接口
+router.get('/index_goods', function (req, res) {
+  const data =  require('../data/ceshi')
+  res.send({code: 0,data})
+})
 
 module.exports = router;
