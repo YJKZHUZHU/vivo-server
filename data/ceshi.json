@@ -2,6 +2,7 @@
 	"data": {
 		"home": [
 			{
+				"isExit": false,
 				"id": 1,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/71/4171_1496689409434hd_530x530.png",
 				"homeName": "X9Plus 全网通",
@@ -67,10 +68,10 @@
 					{
 						"one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170629/2017062914535078223_original.jpg"
 					}
-				],
-				"homePeizhi": "<h3>包装清单</h3><span>标配</span><p>X9s Plus A *1 </p><p>取卡针 *1 </p><p>XE680线控耳机 *1</p><p>闪充充电头 *1</p><p>USB数据线</p><p>透明后盖保护壳 *1</p><p>快速入门指南 *1</p><p>重要信息和保修卡</p><h3>其他参数</h3><div><p>CPU</p><p>高通骁龙八核MSM8976SG（MSM8976pro</p></div>"
+				]
 			},
 			{
+				"isExit": false,
 				"id": 2,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/40/4440_1508723830538hd_530x530.png",
 				"homeName": "X20Plus 全面屏",
@@ -136,6 +137,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 3,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/95/4495_1509454710945hd_530x530.png",
 				"homeName": "Y69 全面屏手机",
@@ -207,6 +209,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 4,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/66/4266_1496689781362hd_530x530.png",
 				"homeName": "Xplay6 128G版",
@@ -278,6 +281,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 5,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/11/4111_1492998667334hd_530x530.png",
 				"homeName": "Y55 全网通",
@@ -343,6 +347,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 6,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/80/4180_1496689544465hd_530x530.png",
 				"homeName": "Y66 全网通",
@@ -413,6 +418,7 @@
 		],
 		"set": [
 			{
+				"isExit": false,
 				"id": 7,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972514378hd_250x250.png",
 				"homeName": "乐心手环",
@@ -472,6 +478,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 8,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20/4020_1481558694236_530x530.png",
 				"homeName": "vivo原装闪充充电器",
@@ -519,6 +526,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 9,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/82/1882_1481558960471_530x530.png",
 				"homeName": "vivo XE600i 原装音乐耳机",
@@ -560,6 +568,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 10,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/73/4273_1491007460873hd_250x250.png",
 				"homeName": "vivo原装闪充数据线—2A电流输出",
@@ -586,6 +595,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 11,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/83/4183_1482921083765_530x530.png",
 				"homeName": "vivo X9原装柔性钢化膜",
@@ -633,6 +643,7 @@
 				]
 			},
 			{
+				"isExit": false,
 				"id": 12,
 				"homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/81/4181_1482720908043_250x250.png",
 				"homeName": "vivo Xplay6原装3D高清保护膜",
