@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e71da01-afe9-4b03-8d5b-0d83efbd0481" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/home.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ceshi.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/ceshi.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="303">
-              <caret line="199" column="33" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
+              <caret line="199" column="40" lean-forward="true" selection-start-line="199" selection-start-column="40" selection-end-line="199" selection-end-column="40" />
               <folding>
                 <element signature="e#3994#4051#0" />
                 <element signature="e#4093#4289#0" />
@@ -42,12 +42,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/ceshi.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+            <state relative-caret-position="50">
+              <caret line="417" column="10" lean-forward="true" selection-start-line="417" selection-start-column="10" selection-end-line="417" selection-end-column="10" />
               <folding>
+                <element signature="e#23#15896#0" />
                 <element signature="e#228#584#0" />
                 <element signature="e#764#2613#0" />
                 <element signature="e#5371#8095#0" />
@@ -79,6 +80,24 @@
                 <element signature="e#63489#63677#0" />
                 <element signature="e#63509#63671#0" />
                 <element signature="e#63683#63872#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/data/home.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+              <folding>
+                <element signature="e#12#15764#0" />
+                <element signature="e#238#594#0" />
+                <element signature="e#774#2623#0" />
+                <element signature="e#5155#7900#0" />
+                <element signature="e#7905#10665#0" />
+                <element signature="e#10670#13144#0" />
+                <element signature="e#13149#15760#0" />
               </folding>
             </state>
           </provider>
@@ -136,14 +155,15 @@
         <option value="$PROJECT_DIR$/util/sms_util.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/data/ceshi.json" />
+        <option value="$PROJECT_DIR$/data/home.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="75" />
-    <option name="y" value="-15" />
-    <option name="width" value="1750" />
-    <option name="height" value="980" />
+    <option name="x" value="8" />
+    <option name="y" value="-11" />
+    <option name="width" value="1920" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -228,18 +248,18 @@
       <workItem from="1552490324758" duration="509000" />
       <workItem from="1552823875975" duration="3279000" />
       <workItem from="1552915477880" duration="4545000" />
-      <workItem from="1552959236498" duration="19917000" />
+      <workItem from="1552959236498" duration="23422000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28863000" />
+    <option name="totallyTimeSpent" value="32368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20179136" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20179136" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -253,7 +273,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.22210184" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.283857" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -291,18 +311,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="199" column="33" selection-start-line="199" selection-start-column="33" selection-end-line="199" selection-end-column="33" />
-          <folding>
-            <element signature="e#3994#4051#0" />
-            <element signature="e#4093#4289#0" />
-            <element signature="e#4340#4571#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/index_category.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -320,11 +328,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="199" column="40" lean-forward="true" selection-start-line="199" selection-start-column="40" selection-end-line="199" selection-end-column="40" />
+          <folding>
+            <element signature="e#3994#4051#0" />
+            <element signature="e#4093#4289#0" />
+            <element signature="e#4340#4571#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data/ceshi.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        <state relative-caret-position="50">
+          <caret line="417" column="10" lean-forward="true" selection-start-line="417" selection-start-column="10" selection-end-line="417" selection-end-column="10" />
           <folding>
+            <element signature="e#23#15896#0" />
             <element signature="e#228#584#0" />
             <element signature="e#764#2613#0" />
             <element signature="e#5371#8095#0" />
@@ -356,6 +377,22 @@
             <element signature="e#63489#63677#0" />
             <element signature="e#63509#63671#0" />
             <element signature="e#63683#63872#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/home.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding>
+            <element signature="e#12#15764#0" />
+            <element signature="e#238#594#0" />
+            <element signature="e#774#2623#0" />
+            <element signature="e#5155#7900#0" />
+            <element signature="e#7905#10665#0" />
+            <element signature="e#10670#13144#0" />
+            <element signature="e#13149#15760#0" />
           </folding>
         </state>
       </provider>

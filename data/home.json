@@ -1,0 +1,420 @@
+{
+  "code": 200,
+  "message": "ok",
+  "data": [
+    {
+      "isExit": false,
+      "id": 1,
+      "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/71/4171_1496689409434hd_530x530.png",
+      "homeName": "X9Plus 全网通",
+      "homeNametwo": "优惠200元|限量促销",
+      "homeSwipe": [
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/71/4171_1496689409434hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/71/4171_1482112378797_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/71/4171_1482112377158_530x530.png"
+        }
+      ],
+      "homeBright": "花呗免息，0首付0利率轻松购机",
+      "homeTitle": "X9s Plus A 5.85英寸大屏，双引擎闪充，4015mAh大电池，持久续航（注：面部识别需升级到最新系统使用）",
+      "homePrice": "2798",
+      "homeValue": "1",
+      "Images": [
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171115/20171115110719510981_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171113/20171113112115957344_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093807784269_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093810349285_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093813167921_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093814935600_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093817527717_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093820318903_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093822750588_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093824598774_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093827290232_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/20161219093829298284_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161219/2016121909383925061_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20161230/20161230205257942403_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170629/2017062914535078223_original.jpg"
+        }
+      ]
+    },
+    {
+      "isExit": false,
+      "id": 2,
+      "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/40/4440_1508723830538hd_530x530.png",
+      "homeName": "X20Plus 全面屏",
+      "homeNametwo": "6.43英寸大屏|0.1s快速解锁",
+      "homeBright": "4月21日0点-7月31日0点，感恩促销直降200，到手价2598",
+      "homeTitle": "X20A 18:9高清全面屏，Face Wake面部识别，0.1s面部解锁，前后2x1200万像素，2400万感光单元。",
+      "homePrice": "3498",
+      "homeValue": "1",
+      "homeSwipe": [
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/40/4440_1508723830538hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/40/4440_1508723832425hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/40/4440_1508723828993hd_530x530.png"
+        }
+      ],
+      "Images": [
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171115/20171115110055603150_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019200901204411_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019200902359537_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019200922571186_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019201528695755_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/2017101920094926848_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019200948703417_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/2017101920101331912_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019201119431711_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019201051376383_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019201051448387_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171019/20171019201158341496_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171027/2017102711364996936_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171027/20171027113700613256_original.jpg"
+        }
+      ]
+    },
+    {
+      "isExit": false,
+      "id": 3,
+      "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/95/4495_1509454710945hd_530x530.png",
+      "homeName": "Y69 全面屏手机",
+      "homeNametwo": "前置2400万像素",
+      "homeBright": "4月24日—5月1日，购机加赠爱奇艺VIP月卡；直降200元促销，到手价999",
+      "homeTitle": "Y69A 32GB内存，前置1600万柔光自拍，正面指纹解锁，一体式机身设计，分屏多任务。",
+      "homePrice": "2498",
+      "homeValue": "1",
+      "homeSwipe": [
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/95/4495_1509454710945hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/95/4495_1509454714610hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/95/4495_1509454706314hd_530x530.png"
+        }
+      ],
+      "Images": [
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232228644662_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232229235145_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171102/20171102143039424294_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232243781406_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232353254161_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171101/20171101191141708950_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232409516746_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232409523196_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232442377774_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232442208606_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/2017103123244195095_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232457784713_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232457762898_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232456912178_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/20171031232519457796_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171031/2017103123251879781_original.jpg"
+        }
+      ]
+    },
+    {
+      "isExit": false,
+      "id": 4,
+      "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/66/4266_1496689781362hd_530x530.png",
+      "homeName": "Xplay6 128G版",
+      "homeNametwo": "后置双摄|免费镭射镌刻",
+      "homeBright": "0首付0利息购机，购机赠豪礼",
+      "homeTitle": "Xplay6 A 曲面2K屏，全曲面设计；6GB大运存，旗舰精品；骁龙820处理器，强劲核心；后置双摄，2400万感光单元，专业级虚化；超窄边框，超长续航。",
+      "homePrice": "3998",
+      "homeValue": "1",
+      "homeSwipe": [
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/66/4266_1496689781362hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/66/4266_1500026039430hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/66/4266_1490271072649hd_530x530.png"
+        }
+      ],
+      "Images": [
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171115/20171115105005767122_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171116/20171116155420650567_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170323/20170323155103829614_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170323/20170323155114886378_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170323/20170323155120205409_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170329/20170329154926638158_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170922/20170922151756502731_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170323/20170323155216955152_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170323/20170323155227379507_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170821/20170821083311616767_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170323/20170323155304684132_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170329/20170329154947686685_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170323/20170323155330211312_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170323/20170323155342477248_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171109/20171109160002274104_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170629/20170629145248102954_original.jpg"
+        }
+      ]
+    },
+    {
+      "isExit": false,
+      "id": 5,
+      "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/11/4111_1492998667334hd_530x530.png",
+      "homeName": "Y55 全网通",
+      "homeNametwo": "大屏美颜自拍",
+      "homeBright": "截止至5月2日，Y55优惠100元促销",
+      "homeTitle": "Y55A 八核处理器，大屏美颜自拍，双卡全网通，支持128GB扩展内存，弧面玻璃，超薄机身",
+      "homePrice": "1098",
+      "homeValue": "1",
+      "homeSwipe": [
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/11/4111_1492998667334hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/11/4111_1500023519212hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/11/4111_1500023520345hd_530x530.png"
+        }
+      ],
+      "Images": [
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171115/20171115111517182942_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091204610656_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091210168540_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091215924855_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091221372744_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091230675858_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091237320807_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091244500855_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091253281854_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091321785328_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/2017042109132813680_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/2017042109133367195_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091341301683_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170421/20170421091351664625_original.jpg"
+        }
+      ]
+    },
+    {
+      "isExit": false,
+      "id": 6,
+      "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/80/4180_1496689544465hd_530x530.png",
+      "homeName": "Y66 全网通",
+      "homeNametwo": "5.5英寸大屏|支持花呗分期",
+      "homeBright": "5.5英寸高清大屏，性价比优选",
+      "homeTitle": "Y66A手机，3GB运存+32GB内存，后置1300万像素，5000万超清合成；3000mAh大电池，持续流畅！",
+      "homePrice": "1298",
+      "homeValue": "1",
+      "homeSwipe": [
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/80/4180_1496689544465hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/80/4180_1498696044402hd_530x530.png"
+        },
+        {
+          "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/80/4180_1482292661461_530x530.png"
+        }
+      ],
+      "Images": [
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20171115/20171115111347370611_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508105840743296_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170818/20170818091719515839_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100448642718_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170512/20170512171500354782_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100453239195_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100455817484_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100457898864_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170704/20170704171315298575_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100508348528_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100511234495_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/2017050810051339260_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100516296671_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100518638841_original.jpg"
+        },
+        {
+          "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20170508/20170508100520942637_original.jpg"
+        }
+      ]
+    }
+  ]
+}
