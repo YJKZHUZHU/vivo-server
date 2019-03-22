@@ -1,7 +1,7 @@
 {
   "code": 200,
-  "message": "ok",
-  "data": [
+  "message": "数据请求成功",
+  "home": [
     {
       "isExit": false,
       "id": 1,
@@ -416,5 +416,6 @@
         }
       ]
     }
-  ]
+  ],
+  "success": true
 }

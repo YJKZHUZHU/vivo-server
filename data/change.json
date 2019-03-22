@@ -1,0 +1,22 @@
+{
+  "code": 200,
+  "change": "数据请求成功",
+  "data": [
+    {
+      "changeImg": "https://shopstatic.vivo.com.cn/campaign/commodity/20180331/20180331214959305333_original.jpg"
+    },
+    {
+      "changeImg": "https://shopstatic.vivo.com.cn/campaign/commodity/20180331/20180331215010137940_original.jpg"
+    },
+    {
+      "changeImg": "https://shopstatic.vivo.com.cn/campaign/commodity/20180331/20180331215017701679_original.jpg"
+    },
+    {
+      "changeImg": "https://shopstatic.vivo.com.cn/campaign/commodity/20180331/20180331215024461942_original.jpg"
+    },
+    {
+      "changeImg": "https://shopstatic.vivo.com.cn/campaign/commodity/20180331/20180331215031571257_original.jpg"
+    }
+  ],
+  "success": true
+}

@@ -195,10 +195,22 @@ router.get('/search_shops', function (req, res) {
   })
 })
 
-//vivo商城接口
+//vivo-首页
 router.get('/index_goods', function (req, res) {
-  const data =  require('../data/ceshi')
-  res.send({code: 0,data})
+  const data =  require('../data/home.json')
+  res.send(data)
 })
+//分类
+router.get('/classify', function (req, res) {
+  const data =  require('../data/classify.json')
+  res.send(data)
+})
+//动态
+router.get('/news', function (req, res) {
+  const data =  require('../data/news.json')
+  res.send(data)
+})
+
+
 
 module.exports = router;
