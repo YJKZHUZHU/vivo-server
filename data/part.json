@@ -24,6 +24,7 @@
       {
         "PartsLower_data": [
           {
+            "isExit": false,
             "id": 7,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972514378hd_250x250.png",
             "homeName": "乐心手环",
@@ -83,6 +84,7 @@
             ]
           },
           {
+            "isExit": false,
             "id": 8,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20/4020_1481558694236_530x530.png",
             "homeName": "vivo原装闪充充电器",
@@ -130,6 +132,7 @@
             ]
           },
           {
+            "isExit": false,
             "id": 9,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/82/1882_1481558960471_530x530.png",
             "homeName": "vivo XE600i 原装音乐耳机",
@@ -171,6 +174,7 @@
             ]
           },
           {
+            "isExit": false,
             "id": 10,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/73/4273_1491007460873hd_250x250.png",
             "homeName": "vivo原装闪充数据线—2A电流输出",
@@ -197,6 +201,7 @@
             ]
           },
           {
+            "isExit": false,
             "id": 11,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/83/4183_1482921083765_530x530.png",
             "homeName": "vivo X9原装柔性钢化膜",
@@ -244,6 +249,7 @@
             ]
           },
           {
+            "isExit": false,
             "id": 12,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/81/4181_1482720908043_250x250.png",
             "homeName": "vivo Xplay6原装3D高清保护膜",
@@ -295,6 +301,7 @@
       {
         "PartsLower_data": [
           {
+            "isExit": false,
             "id": 8,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20/4020_1481558694236_530x530.png",
             "homeName": "vivo原装闪充充电器",
@@ -342,6 +349,7 @@
             ]
           },
           {
+            "isExit": false,
             "id": 10,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/73/4273_1491007460873hd_250x250.png",
             "homeName": "vivo原装闪充数据线—2A电流输出",
@@ -372,6 +380,7 @@
       {
         "PartsLower_data": [
           {
+            "isExit": false,
             "id": 11,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/83/4183_1482921083765_530x530.png",
             "homeName": "vivo X9原装柔性钢化膜",
@@ -419,6 +428,7 @@
             ]
           },
           {
+            "isExit": false,
             "id": 12,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/81/4181_1482720908043_250x250.png",
             "homeName": "vivo Xplay6原装3D高清保护膜",
@@ -470,6 +480,7 @@
       {
         "PartsLower_data": [
           {
+            "isExit": false,
             "id": 9,
             "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/82/1882_1481558960471_530x530.png",
             "homeName": "vivo XE600i 原装音乐耳机",
