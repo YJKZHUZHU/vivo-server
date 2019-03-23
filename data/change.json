@@ -1,7 +1,7 @@
 {
   "code": 200,
-  "change": "数据请求成功",
-  "data": [
+  "success": "数据请求成功",
+  "change": [
     {
       "changeImg": "https://shopstatic.vivo.com.cn/campaign/commodity/20180331/20180331214959305333_original.jpg"
     },

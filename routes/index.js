@@ -210,6 +210,21 @@ router.get('/news', function (req, res) {
   const data =  require('../data/news.json')
   res.send(data)
 })
+//详情
+router.get('/goodDetail', function (req, res) {
+  const data =  require('../data/goodDetail.json')
+  res.send(data)
+})
+//以旧换新
+router.get('/change', function (req, res) {
+  const data =  require('../data/change.json')
+  res.send(data)
+})
+//获取手机列表
+router.get('/phone', function (req, res) {
+  const data =  require('../data/phone.json')
+  res.send(data)
+})
 
 
 
