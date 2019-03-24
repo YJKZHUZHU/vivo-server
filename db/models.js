@@ -12,10 +12,25 @@
  */
 // 1. 连接数据库
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/guigu_zhipin')
+mongoose.connect('mongodb://localhost:27017/vivo-yjk')
 const conn = mongoose.connection
+/*
+连接成功
+ */
 conn.on('connected', function () {
   console.log('数据库连接成功!')
+})
+/*
+连接异常
+ */
+conn.on('error', function (err) {
+    console.log('数据库连接异常，异常原因:'+err)
+})
+/*
+连接断开
+ */
+conn.on('discommected', function () {
+    console.log('数据库连接断开')
 })
 
 // 2. 得到对应特定集合的Model: UserModel
