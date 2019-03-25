@@ -2290,31 +2290,31 @@ var setData =  [
       }
     ]
 
-homeData.forEach(function (ele) {
-  saveToMongo(ele, HomeModel)
-})
-
-changeData.forEach(function (ele) {
-  saveToMongo(ele, ChangeModel)
-})
-
-saveToMongo(classifyData, ClassifyModel)
-
-goodDetailData.forEach(function (ele) {
-  saveToMongo(ele, goodDetailModel)
-})
-
-newsData.forEach(function (ele) {
-  saveToMongo(ele, newsModel)
-})
-
-saveToMongo(partData, partModel)
-
-saveToMongo(phoneData, phoneModel)
-
-setData.forEach(function (ele) {
-  saveToMongo(ele, setModel)
-})
+// homeData.forEach(function (ele) {
+//   saveToMongo(ele, HomeModel)
+// })
+//
+// changeData.forEach(function (ele) {
+//   saveToMongo(ele, ChangeModel)
+// })
+//
+// saveToMongo(classifyData, ClassifyModel)
+//
+// goodDetailData.forEach(function (ele) {
+//   saveToMongo(ele, goodDetailModel)
+// })
+//
+// newsData.forEach(function (ele) {
+//   saveToMongo(ele, newsModel)
+// })
+//
+// saveToMongo(partData, partModel)
+//
+// saveToMongo(phoneData, phoneModel)
+//
+// setData.forEach(function (ele) {
+//   saveToMongo(ele, setModel)
+// })
 function saveToMongo(obj,model) {
   (new model(obj)).save(function (err) {
     if (err) {
@@ -2461,17 +2461,6 @@ router.get('/logout', function (req, res) {
   delete req.session.userid
   // 返回数据
   res.send({code: 0})
-})
-
-/*
-根据经纬度获取位置详情
- */
-router.get('/position/:geohash', function (req, res) {
-  const {geohash} = req.params
-  ajax(`http://cangdu.org:8001/v2/pois/${geohash}`)
-    .then(data => {
-      res.send({code: 0, data})
-    })
 })
 
 /*
