@@ -2501,33 +2501,93 @@ router.get('/search_shops', function (req, res) {
 
 //vivo-首页
 router.get('/index_goods', function (req, res) {
-  const data =  require('../data/home.json')
-  res.send(data)
+    HomeModel.find({}, function(err, data) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.send({
+                code: 200,
+                message: '数据请求成功',
+                success: true,
+                home: data
+            })
+        }
+    });
 })
 //分类
 router.get('/classify', function (req, res) {
-  const data =  require('../data/classify.json')
-  res.send(data)
+    ClassifyModel.find({}, function(err, data) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.send({
+                code: 200,
+                message: '数据请求成功',
+                success: true,
+                classify: data
+            })
+        }
+    });
 })
 //动态
 router.get('/news', function (req, res) {
-  const data =  require('../data/news.json')
-  res.send(data)
+    newsModel.find({}, function(err, data) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.send({
+                code: 200,
+                message: '数据请求成功',
+                success: true,
+                news: data
+            })
+        }
+    });
 })
 //详情
 router.get('/goodDetail', function (req, res) {
-  const data =  require('../data/goodDetail.json')
-  res.send(data)
+    goodDetailModel.find({}, function(err, data) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.send({
+                code: 200,
+                message: '数据请求成功',
+                success: true,
+                goodDetail: data
+            })
+        }
+    });
 })
 //以旧换新
 router.get('/change', function (req, res) {
-  const data =  require('../data/change.json')
-  res.send(data)
+    ChangeModel.find({}, function(err, data) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.send({
+                code: 200,
+                message: '数据请求成功',
+                success: true,
+                change: data
+            })
+        }
+    });
 })
 //获取手机列表
 router.get('/phone', function (req, res) {
-  const data =  require('../data/phone.json')
-  res.send(data)
+    phoneModel.find({}, function(err, data) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.send({
+                code: 200,
+                message: '数据请求成功',
+                success: true,
+                phone: data
+            })
+        }
+    });
 })
 
 
