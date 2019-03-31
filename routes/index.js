@@ -2462,31 +2462,6 @@ router.get('/logout', function (req, res) {
   // 返回数据
   res.send({code: 0})
 })
-
-/*
-获取首页分类列表
- */
-router.get('/index_category', function (req, res) {
-  setTimeout(function () {
-    const data = require('../data/index_category.json')
-    res.send({code: 0, data})
-  }, 300)
-})
-
-/*
-根据经纬度获取商铺列表
-?latitude=40.10038&longitude=116.36867
- */
-router.get('/shops', function (req, res) {
-  const latitude = req.query.latitude
-  const longitude = req.query.longitude
-
-  setTimeout(function () {
-    const data = require('../data/shops.json')
-    res.send({code: 0, data})
-  }, 300)
-})
-
 router.get('/search_shops', function (req, res) {
   const {geohash, keyword} = req.query
   ajax('http://cangdu.org:8001/v4/restaurants', {
