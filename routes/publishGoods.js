@@ -1,13 +1,25 @@
 var express = require('express');
 var router = express.Router();
 const multer = require('multer')
+const HomeModel = require('../db/home')
 const upload = multer({
-    dest: 'G:/vivoImg'
+    // dest: 'G:/vivoImg'
+    dest: 'C:/vivoImg'
 })
 const fs = require('fs')
 const path = require('path')
 var detailSwipe = [] //接收详情轮播图
 var detailIntroduction = [] //接收详情介绍图片
+//存储到mongo
+function saveToMongo(obj,model) {
+    (new model(obj)).save(function (err) {
+        if (err) {
+            console.log(err)
+            return
+        }
+        console.log('数据插入成功')
+    })
+}
 //上传图片接口
 router.post('/uploadHomeImg', upload.single('file'),function (req, res) {
     console.log(req.headers.host)
@@ -118,8 +130,24 @@ router.post('/uploadDetailIntroduction', upload.single('file'),function (req, re
 })
 //发布商品
 router.post('/publishGoods', function (req, res) {
+    var number = 6
+    number++
     console.log(req.body)
-    console.log('进来了')
+    // JSON.parse(req.body.homeSwipe)
+    // JSON.parse(req.body.Images)
+    // var homeData = req.body
+    // console.log(homeData)
+    delete req.body.file
+    delete req.body.close
+    req.body.homeValue = 1
+    req.bode.id = number
+    HomeModel.save(req.body, function (err, data) {
+        if(err){
+            console.log(err)
+        }else {
+            console.log('数据存储成功')
+        }
+    })
     res.send({
         code: 200,
         message: '发布成功',
