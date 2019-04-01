@@ -3,8 +3,8 @@ var router = express.Router();
 const multer = require('multer')
 const HomeModel = require('../db/home')
 const upload = multer({
-    // dest: 'G:/vivoImg'
-    dest: 'C:/vivoImg'
+    dest: 'G:/vivoImg'
+    // dest: 'C:/vivoImg'
 })
 const fs = require('fs')
 const path = require('path')
@@ -62,7 +62,9 @@ router.post('/uploadDetailImg', upload.single('file'),function (req, res) {
     }else {
         var fileName = new Date().getTime() + '_' + req.file.originalname;
         var imgUrl = 'http://'+ req.headers.host + '/vivo-img/'+fileName
-        detailSwipe.push(imgUrl)
+        detailSwipe.push({
+            "swipe": imgUrl
+        })
         fs.readFile(req.file.path, function(err, data) {
             if(err) {
                 console.log('文件读取失败', err)
@@ -102,7 +104,9 @@ router.post('/uploadDetailIntroduction', upload.single('file'),function (req, re
     }else {
         var fileName = new Date().getTime() + '_' + req.file.originalname;
         var imgUrl = 'http://'+ req.headers.host + '/vivo-img/'+fileName
-        detailIntroduction.push(imgUrl)
+        detailIntroduction.push({
+            "one": imgUrl
+        })
         fs.readFile(req.file.path, function(err, data) {
             if(err) {
                 console.log('文件读取失败', err)
@@ -133,21 +137,44 @@ router.post('/publishGoods', function (req, res) {
     var number = 6
     number++
     console.log(req.body)
+    console.log(typeof req.body.homeImg,typeof req.body.homeSwipe,typeof req.body.Images)
+    // console.log(req.body.homeImg.replace(/\'/g, ""))
+    // req.body.homeImg = req.body.homeImg.replace(/\'/g, "")
+    // req.body.homeSwipe = req.body.homeSwipe.replace(/\'/g, "")
+    // req.body.Images = req.body.Images.replace(/\'/g, "")
+    // JSON.parse(req.body.homeImg)
     // JSON.parse(req.body.homeSwipe)
     // JSON.parse(req.body.Images)
     // var homeData = req.body
-    // console.log(homeData)
+    // console.log(JSON.parse(req.body.homeSwipe),JSON.parse(req.body.Images),JSON.parse(req.body.homeImg))
+    // console.log(typeof req.body.homeImg)
     delete req.body.file
     delete req.body.close
     req.body.homeValue = 1
-    req.bode.id = number
-    HomeModel.save(req.body, function (err, data) {
-        if(err){
-            console.log(err)
-        }else {
-            console.log('数据存储成功')
-        }
-    })
+    req.body.id = number
+    var home = {
+        'isExit': req.body.isExit,
+        'id': number,
+        'homeImg': req.body.homeImg.replace(/\'/g, ""),
+        'homeName': req.body.homeName,
+        'homeNametwo': req.body.homeNametwo,
+        'homeSwipe': req.body.homeSwipe.replace(/\'/g, ""),
+        'homeBright': req.body.homeBright,
+        'homeTitle': req.body.homeTitle,
+        'homePrice': req.body.homePrice,
+        'homeValue': 1,
+        'Images': req.body.Images.replace(/\'/g, "")
+    }
+    console.log(home)
+    console.log(req.body)
+    // HomeModel.save(req.body, function (err, data) {
+    //     if(err){
+    //         console.log(err)
+    //     }else {
+    //         console.log('数据存储成功')
+    //     }
+    // })
+    // saveToMongo(home,HomeModel)
     res.send({
         code: 200,
         message: '发布成功',
