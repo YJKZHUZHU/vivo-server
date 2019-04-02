@@ -2289,6 +2289,15 @@ var setData =  [
         ]
       }
     ]
+function saveToMongo(obj,model) {
+  (new model(obj)).save(function (err) {
+    if (err) {
+      console.log(err)
+      return
+    }
+    console.log('数据插入成功')
+  })
+}
 
 // homeData.forEach(function (ele) {
 //   saveToMongo(ele, HomeModel)
@@ -2315,15 +2324,7 @@ var setData =  [
 // setData.forEach(function (ele) {
 //   saveToMongo(ele, setModel)
 // })
-function saveToMongo(obj,model) {
-  (new model(obj)).save(function (err) {
-    if (err) {
-      console.log(err)
-      return
-    }
-    console.log('数据插入成功')
-  })
-}
+
 /*
 密码登陆
  */

@@ -5,7 +5,7 @@ const newsScheam = new mongoose.Schema({
     'newsTitle': String,
     'newsImg': String,
     'newsCon': String,
-    'newsTime': Array,
+    'newsTime': String,
     'sc': Boolean,
     'newsDetail': String
 })
