@@ -26,15 +26,23 @@ function saveToMongo(obj,model) {
     })
 }
 //判定分类
-function setClassify(paramsId){
+function setClassify(paramsId,paramsImg,paramsName){
     ClassifyModel.find({}, function (err, data) {
-        for(var i in data.left) {
-            if (paramsId == data.left[i].id){
-                for(var j in data.right){
-
-                }
+        if(err){
+            console.log(err)
+        }
+        for(var i in data[0].right) {
+            if (paramsId == i){
+                ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log(result)
+                    console.log('更新成功')
+                })
             }
         }
+
     })
 }
 //上传图片接口
@@ -165,9 +173,7 @@ router.post('/publishGoods', function (req, res) {
         homeId = Math.max.apply(Math, data.map(function (o) {
             return o.id
         }))
-        if (req.body.classify == 0){
-
-        }
+        setClassify(req.body.classify,req.body.homeImg,req.body.homeName)
         var home = {
             'isExit': req.body.isExit,
             'id': homeId+1,

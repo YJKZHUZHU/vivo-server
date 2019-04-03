@@ -639,7 +639,8 @@ var classifyData = {
     }
 
 
-  ]
+  ],
+    "id": "1"
 }
 var goodDetailData =  [
       {
