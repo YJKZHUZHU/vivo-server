@@ -94,29 +94,29 @@ router.post('/uploadNewsDetailImg', upload.single('file'),function (req, res) {
 })
 //发布动态
 router.post('/publishAritcle', function (req, res) {
-    console.log(res.body)
+    console.log(req.body)
     //找到最大的ID值
     NewsModel.find({}, function (err,data) {
         if (err) {
             console.log(err)
         }
-        newsIdId = data[data.length-1].id
+        newsId = data[data.length-1].id
         delete req.body.file
         delete req.body.close
-        // var home = {
-        //     'sc': req.body.isExit,
-        //     'id': newsId+1,
-        //     'homeImg': homeImg,
-        //     'homeName': req.body.homeName,
-        //     'homeNametwo': req.body.homeNametwo,
-        //     'homeSwipe': detailSwipe,
-        //     'homeBright': req.body.homeBright,
-        //     'homeTitle': req.body.homeTitle,
-        //     'homePrice': req.body.homePrice,
-        //     'homeValue': 1,
-        //     'Images': detailIntroduction
-        // }
-        // saveToMongo(home,HomeModel)
+        var newsDetail = ''
+        for(var i in newsDetailImg) {
+            newsDetail +=`<img src='${newsDetailImg[i].list}' style='width:100%;margin-bottom: 10px' ><p style='margin-bottom: 10px';>${req.body.newsDetail}</p>`
+        }
+        var news = {
+            'sc': req.body.sc,
+            'id': newsId+1,
+            'newsImg': newsImg,
+            'newsTitle': req.body.newsTitle,
+            'newsCon': req.body.newsCon,
+            'newsTime': req.body.newsTime,
+            'newsDetail': newsDetail
+        }
+        saveToMongo(news,NewsModel)
         res.send({
             code: 200,
             message: '发布成功',
@@ -124,9 +124,8 @@ router.post('/publishAritcle', function (req, res) {
             phone: null
         })
         //    清空图片
-        homeImg = null
-        detailSwipe = []
-        detailIntroduction = []
+        newsImg = null
+        newsDetailImg = []
     })
 })
 module.exports = router;

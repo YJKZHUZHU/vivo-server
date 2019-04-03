@@ -2515,7 +2515,8 @@ router.get('/news', function (req, res) {
                 code: 200,
                 message: '数据请求成功',
                 success: true,
-                news: data
+                news: data,
+                totalCount: data.length
             })
         }
     });
@@ -2530,7 +2531,8 @@ router.get('/goodDetail', function (req, res) {
                 code: 200,
                 message: '数据请求成功',
                 success: true,
-                goodDetail: data
+                goodDetail: data,
+                totalCount: data.length
             })
         }
     });

@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer')
 const HomeModel = require('../db/home')
+const DetailModel = require('../db/goodDetail')
+const ClassifyModel = require('../db/classify')
 const upload = multer({
     // dest: 'G:/vivoImg'
     dest: 'C:/vivoImg'
@@ -21,6 +23,18 @@ function saveToMongo(obj,model) {
             return
         }
         console.log('数据插入成功')
+    })
+}
+//判定分类
+function setClassify(paramsId){
+    ClassifyModel.find({}, function (err, data) {
+        for(var i in data.left) {
+            if (paramsId == data.left[i].id){
+                for(var j in data.right){
+
+                }
+            }
+        }
     })
 }
 //上传图片接口
@@ -139,15 +153,21 @@ router.post('/uploadDetailIntroduction', upload.single('file'),function (req, re
 
 //发布商品
 router.post('/publishGoods', function (req, res) {
+    delete req.body.file
+    delete req.body.close
+    req.body.homeValue = 1
     //找到最大的ID值
-    HomeModel.find({}, function (err,data) {
+    DetailModel.find({}, function (err, data) {
         if (err) {
             console.log(err)
         }
-        homeId = data[data.length-1].id
-        delete req.body.file
-        delete req.body.close
-        req.body.homeValue = 1
+
+        homeId = Math.max.apply(Math, data.map(function (o) {
+            return o.id
+        }))
+        if (req.body.classify == 0){
+
+        }
         var home = {
             'isExit': req.body.isExit,
             'id': homeId+1,
@@ -162,6 +182,7 @@ router.post('/publishGoods', function (req, res) {
             'Images': detailIntroduction
         }
         saveToMongo(home,HomeModel)
+        saveToMongo(home,DetailModel)
         res.send({
             code: 200,
             message: '发布成功',
@@ -173,5 +194,6 @@ router.post('/publishGoods', function (req, res) {
         detailSwipe = []
         detailIntroduction = []
     })
+
 })
 module.exports = router;
