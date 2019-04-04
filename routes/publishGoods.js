@@ -4,6 +4,7 @@ const multer = require('multer')
 const HomeModel = require('../db/home')
 const DetailModel = require('../db/goodDetail')
 const ClassifyModel = require('../db/classify')
+const PhoneModel = require('../db/phone')
 const upload = multer({
     // dest: 'G:/vivoImg'
     dest: 'C:/vivoImg'
@@ -26,14 +27,15 @@ function saveToMongo(obj,model) {
     })
 }
 //判定分类
-function setClassify(paramsId,paramsImg,paramsName){
+function setClassify(paramsId,paramsImg,paramsName,ID){
     ClassifyModel.find({}, function (err, data) {
         if(err){
             console.log(err)
         }
         for(var i in data[0].right) {
             if (paramsId == i){
-                ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
+                // ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
+                ClassifyModel.update({"id": "1", "right.id": paramsId},{"$push":{"right.$.rigth_data": {"id":ID,"img":paramsImg,"name":paramsName}}},function(err, result){
                     if(err){
                         console.log(err)
                     }
@@ -45,6 +47,34 @@ function setClassify(paramsId,paramsImg,paramsName){
 
     })
 }
+//手机
+function phoneClassify(paramsId,paramsImg,paramsName,ID,paramsNameTwo,paramsPrice){
+    PhoneModel.find({}, function (err, data) {
+        if(err){
+            console.log(err)
+        }
+        console.log(paramsId,data[0].lower.length)
+        for(var i in data[0].lower) {
+            console.log(i)
+            if (paramsId == i){
+                console.log(paramsId)
+                // ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
+                PhoneModel.update({"id": "1", "lower.id": paramsId},{"$push":{"lower.$.lower_data": {"id":ID,"ImageOne":paramsImg,"name":paramsName,"nameTwo":paramsNameTwo,"price":paramsPrice}}},function(err, result){
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log(result)
+                    console.log('更新成功')
+                })
+            }else {
+                console.log('未找到手机分类')
+                return
+            }
+        }
+
+    })
+}
+
 //上传图片接口
 router.post('/uploadHomeImg', upload.single('file'),function (req, res) {
     console.log(req.headers.host)
@@ -169,11 +199,11 @@ router.post('/publishGoods', function (req, res) {
         if (err) {
             console.log(err)
         }
-
         homeId = Math.max.apply(Math, data.map(function (o) {
             return o.id
         }))
-        setClassify(req.body.classify,req.body.homeImg,req.body.homeName)
+        setClassify(req.body.classify,homeImg,req.body.homeName,homeId)
+        phoneClassify(req.body.classify,homeImg,req.body.homeName,homeId,req.body.homeNametwo,req.body.homePrice)
         var home = {
             'isExit': req.body.isExit,
             'id': homeId+1,

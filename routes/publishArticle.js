@@ -100,12 +100,16 @@ router.post('/publishAritcle', function (req, res) {
         if (err) {
             console.log(err)
         }
-        newsId = data[data.length-1].id
+        newsId = Math.max.apply(Math, data.map(function (o) {
+            return o.id
+        }))
         delete req.body.file
         delete req.body.close
+        req.body.newsDetail = req.body.newsDetail.split('/')
+        console.log(req.body.newsDetail)
         var newsDetail = ''
-        for(var i in newsDetailImg) {
-            newsDetail +=`<img src='${newsDetailImg[i].list}' style='width:100%;margin-bottom: 10px' ><p style='margin-bottom: 10px';>${req.body.newsDetail}</p>`
+        for(var i in req.body.newsDetail) {
+            newsDetail +=`<img src='${newsDetailImg[i].list}' style='width:100%;margin-bottom: 10px' ><p style='margin-bottom: 10px';>${req.body.newsDetail[i]}</p>`
         }
         var news = {
             'sc': req.body.sc,

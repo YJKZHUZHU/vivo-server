@@ -548,7 +548,8 @@ var classifyData = {
           "img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/81/4181_1482720908043_250x250.png",
           "name":"3D高清保护膜"
         }
-      ]
+      ],
+      "id": "0"
     },
     {
       "rigth_data":[
@@ -557,7 +558,8 @@ var classifyData = {
           "img": "https://shopstatic.vivo.com.cn/vivoshop/commodity/66/4266_1496689781362hd_530x530.png",
           "name": "Xplay6"
         }
-      ]
+      ],
+      "id": "1"
     },
     {
       "rigth_data":[
@@ -575,7 +577,8 @@ var classifyData = {
           "img": "https://shopstatic.vivo.com.cn/vivoshop/commodity/66/4266_1496689781362hd_530x530.png",
           "name": "Xplay6"
         }
-      ]
+      ],
+      "id": "2"
     },
     {
       "rigth_data":[
@@ -594,7 +597,8 @@ var classifyData = {
           "img": "https://shopstatic.vivo.com.cn/vivoshop/commodity/80/4180_1496689544465hd_530x530.png",
           "name": "Y66"
         }
-      ]
+      ],
+      "id": "3"
     },
     {
       "rigth_data":[
@@ -602,8 +606,9 @@ var classifyData = {
           "id":8,
           "img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/20/4020_1481558694236_530x530.png",
           "name":"闪充充电器"
-        }
-      ]
+        },
+      ],
+      "id": "4"
     },
     {
       "rigth_data":[
@@ -617,7 +622,8 @@ var classifyData = {
           "img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/81/4181_1482720908043_250x250.png",
           "name":"3D高清保护膜"
         }
-      ]
+      ],
+      "id": "5"
     },
     {
       "rigth_data":[
@@ -626,7 +632,8 @@ var classifyData = {
           "img":"https://shopstatic.vivo.com.cn/vivoshop/commodity/82/1882_1481558960471_530x530.png",
           "name":"原装音乐耳机"
         }
-      ]
+      ],
+      "id": "6"
     },
     {
       "rigth_data":[
@@ -635,10 +642,9 @@ var classifyData = {
           "img": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972514378hd_250x250.png",
           "name":"乐心手环"
         }
-      ]
+      ],
+      "id": "7"
     }
-
-
   ],
     "id": "1"
 }
@@ -1957,7 +1963,8 @@ var phoneData = {
               "nametwo": "5.5英寸大屏|支持花呗分期",
               "Price": "1298"
             }
-          ]
+          ],
+          "id": "0"
         },
         {
           "lower_data": [
@@ -1968,7 +1975,8 @@ var phoneData = {
               "nametwo": "后置双摄|免费镭射镌刻",
               "Price": "3998"
             }
-          ]
+          ],
+          "id": "1"
         },
         {
           "lower_data": [
@@ -1986,7 +1994,8 @@ var phoneData = {
               "name": "X20Plus 全面屏",
               "Price": "3498"
             }
-          ]
+          ],
+          "id": "2"
         },
         {
           "lower_data": [
@@ -2011,9 +2020,11 @@ var phoneData = {
               "nametwo": "前置2400万像素",
               "Price": "2498"
             }
-          ]
+          ],
+          "id": "3"
         }
-      ]
+      ],
+      "id": "1"
     }
 var setData =  [
       {
@@ -2303,25 +2314,25 @@ function saveToMongo(obj,model) {
 // homeData.forEach(function (ele) {
 //   saveToMongo(ele, HomeModel)
 // })
-//
+
 // changeData.forEach(function (ele) {
 //   saveToMongo(ele, ChangeModel)
 // })
-//
+
 // saveToMongo(classifyData, ClassifyModel)
-//
+
 // goodDetailData.forEach(function (ele) {
 //   saveToMongo(ele, goodDetailModel)
 // })
-//
+
 // newsData.forEach(function (ele) {
 //   saveToMongo(ele, newsModel)
 // })
-//
+
 // saveToMongo(partData, partModel)
-//
+
 // saveToMongo(phoneData, phoneModel)
-//
+
 // setData.forEach(function (ele) {
 //   saveToMongo(ele, setModel)
 // })
