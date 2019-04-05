@@ -105,7 +105,13 @@ router.post('/publishAritcle', function (req, res) {
         }))
         delete req.body.file
         delete req.body.close
-        req.body.newsDetail = req.body.newsDetail.split('/')
+        if(req.body.newsDetail.lastIndexOf('/') == -1){
+            req.body.newsDetail = req.body.newsDetail.split('/')
+        }else {
+            req.body.newsDetail = req.body.newsDetail.split('/').filter(function (n) {
+                return n
+            })
+        }
         console.log(req.body.newsDetail)
         var newsDetail = ''
         for(var i in req.body.newsDetail) {

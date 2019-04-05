@@ -5,6 +5,7 @@ const HomeModel = require('../db/home')
 const DetailModel = require('../db/goodDetail')
 const ClassifyModel = require('../db/classify')
 const PhoneModel = require('../db/phone')
+const PartModel = require('../db/part')
 const upload = multer({
     // dest: 'G:/vivoImg'
     dest: 'C:/vivoImg'
@@ -32,7 +33,7 @@ function setClassify(paramsId,paramsImg,paramsName,ID){
         if(err){
             console.log(err)
         }
-        for(var i in data[0].right) {
+        for(var i=0;i<data[0].right.length;i++ ) {
             if (paramsId == i){
                 // ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
                 ClassifyModel.update({"id": "1", "right.id": paramsId},{"$push":{"right.$.rigth_data": {"id":ID,"img":paramsImg,"name":paramsName}}},function(err, result){
@@ -40,8 +41,16 @@ function setClassify(paramsId,paramsImg,paramsName,ID){
                         console.log(err)
                     }
                     console.log(result)
-                    console.log('更新成功')
+                    console.log('更新部分成功')
                 })
+
+                ClassifyModel.update({"id": "1", "right.id": "0"},{"$push":{"right.$.rigth_data": {"id":ID,"img":paramsImg,"name":paramsName}}},function(err, result){
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log('更新全部成功')
+                })
+
             }
         }
 
@@ -53,22 +62,55 @@ function phoneClassify(paramsId,paramsImg,paramsName,ID,paramsNameTwo,paramsPric
         if(err){
             console.log(err)
         }
-        console.log(paramsId,data[0].lower.length)
-        for(var i in data[0].lower) {
-            console.log(i)
-            if (paramsId == i){
-                console.log(paramsId)
+        for(var i = 1; i < data[0].lower.length; i++ ) {
+            if (i == paramsId ){
+                console.log('i='+i)
+                console.log('paramsId='+paramsId,data[0].lower[i])
+                console.log('相等')
                 // ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
                 PhoneModel.update({"id": "1", "lower.id": paramsId},{"$push":{"lower.$.lower_data": {"id":ID,"ImageOne":paramsImg,"name":paramsName,"nameTwo":paramsNameTwo,"price":paramsPrice}}},function(err, result){
                     if(err){
                         console.log(err)
                     }
-                    console.log(result)
-                    console.log('更新成功')
+                    console.log('手机分类成功')
                 })
-            }else {
-                console.log('未找到手机分类')
-                return
+                //给全部手机添加一条
+                PhoneModel.update({"id": "1", "lower.id": '0'},{"$push":{"lower.$.lower_data": {"id":ID,"ImageOne":paramsImg,"name":paramsName,"nameTwo":paramsNameTwo,"price":paramsPrice}}},function(err, result){
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log('全部手机增加成功')
+                })
+            }
+        }
+
+    })
+}
+//配件
+function partClassify(paramsId,model){
+    console.log("model:"+ JSON.stringify(model))
+    PartModel.find({}, function (err, data) {
+        if(err){
+            console.log(err)
+        }
+        console.log(data[0].PartsLower.length+3,model.paramsId)
+        for(var i = 4; i < data[0].PartsLower.length+3; i++ ) {
+            if (i == paramsId ){
+                console.log('相等')
+                // ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
+                PartModel.update({"id": "1", "PartsLower.id": paramsId},{"$push":{"PartsLower.$.PartsLower_data": model}},function(err, result){
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log('配件分类成功')
+                })
+                //给全部配件添加一条
+                PartModel.update({"id": "1", "PartsLower.id": "0"},{"$push":{"PartsLower.$.PartsLower_data": model}},function(err, result){
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log('全部配件分类成功')
+                })
             }
         }
 
@@ -203,7 +245,6 @@ router.post('/publishGoods', function (req, res) {
             return o.id
         }))
         setClassify(req.body.classify,homeImg,req.body.homeName,homeId)
-        phoneClassify(req.body.classify,homeImg,req.body.homeName,homeId,req.body.homeNametwo,req.body.homePrice)
         var home = {
             'isExit': req.body.isExit,
             'id': homeId+1,
@@ -217,6 +258,12 @@ router.post('/publishGoods', function (req, res) {
             'homeValue': 1,
             'Images': detailIntroduction
         }
+        if(req.body.classify >= 4){
+            partClassify(req.body.classify,home)
+        }else {
+            phoneClassify(req.body.classify,homeImg,req.body.homeName,homeId,req.body.homeNametwo,req.body.homePrice)
+        }
+
         saveToMongo(home,HomeModel)
         saveToMongo(home,DetailModel)
         res.send({

@@ -1382,16 +1382,20 @@ var partData =  {
           "name": "全部"
         },
         {
-          "id": 1,
+          "id": 4,
           "name": "充电器"
         },
         {
-          "id": 2,
+          "id": 5,
           "name": "保护膜"
         },
         {
-          "id": 3,
+          "id": 6,
           "name": "耳机音响"
+        },
+        {
+          "id": 7,
+          "name": "智能外设"
         }
       ],
       "PartsLower": [
@@ -1670,7 +1674,8 @@ var partData =  {
                 }
               ]
             }
-          ]
+          ],
+          "id": "0"
         },
         {
           "PartsLower_data": [
@@ -1749,7 +1754,8 @@ var partData =  {
                 }
               ]
             }
-          ]
+          ],
+          "id": "4"
         },
         {
           "PartsLower_data": [
@@ -1849,7 +1855,8 @@ var partData =  {
                 }
               ]
             }
-          ]
+          ],
+          "id": "5"
         },
         {
           "PartsLower_data": [
@@ -1895,9 +1902,76 @@ var partData =  {
                 }
               ]
             }
-          ]
+          ],
+          "id": "6"
+        },
+        {
+          "PartsLower_data":[
+            {
+              "isExit": false,
+              "id": 7,
+              "homeImg": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972514378hd_250x250.png",
+              "homeName": "乐心手环",
+              "homeNametwo": "【首发价239，领券再减20，前50名下单用户送体脂秤】",
+              "homeBright": "首发价239，领券再减20，前50名下单用户送体脂秤",
+              "homeTitle": "全天24小时心率监测，支持12项运动模式全纪录，超长续航，IP68级防水。中奖用户体脂秤将在5月31日前单独发出。",
+              "homeValue": "1",
+              "homePrice": "239",
+              "homeSwipe": [
+                {
+                  "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972514378hd_530x530.png"
+                },
+                {
+                  "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972555460hd_530x530.png"
+                },
+                {
+                  "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972611298hd_530x530.png"
+                },
+                {
+                  "swipe": "https://shopstatic.vivo.com.cn/vivoshop/commodity/27/5027_1526972617808hd_530x530.png"
+                }
+              ],
+              "Images": [
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/20180522150955749515_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/20180522150955946411_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/2018052215095521932_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/2018052215095745571_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/20180522150959696322_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/20180522150959849536_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/20180522150959796166_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/20180522151002571997_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/20180522151002264542_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180522/20180522151002434978_original.jpg"
+                },
+                {
+                  "one": "https://shopstatic.vivo.com.cn/vivoshop/commodity/20180110/20180110111720797899_original.jpg"
+                }
+              ]
+            }
+          ],
+          "id": "7"
         }
-      ]
+      ],
+      "id": "1"
     }
 var phoneData = {
       "upper": [
@@ -2564,7 +2638,7 @@ router.get('/change', function (req, res) {
         }
     });
 })
-//获取手机列表
+//获取手机分类列表
 router.get('/phone', function (req, res) {
     phoneModel.find({}, function(err, data) {
         if(err) {
@@ -2579,6 +2653,22 @@ router.get('/phone', function (req, res) {
         }
     });
 })
+//获取配件分类列表
+router.get('/part', function (req, res) {
+  partModel.find({}, function(err, data) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.send({
+        code: 200,
+        message: '数据请求成功',
+        success: true,
+        parts: data
+      })
+    }
+  });
+})
+
 
 
 
