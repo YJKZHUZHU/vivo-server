@@ -2384,7 +2384,16 @@ function saveToMongo(obj,model) {
     console.log('数据插入成功')
   })
 }
-
+function findMongodbData (model) {
+  return new Promise((resolve, reject) => {
+    model.find({}, function(err, data) {
+      if(err) {
+        return reject(err);
+      }
+      resolve(data)
+    });
+  })
+}
 // homeData.forEach(function (ele) {
 //   saveToMongo(ele, HomeModel)
 // })
@@ -2563,18 +2572,28 @@ router.get('/search_shops', function (req, res) {
 
 //vivo-首页
 router.get('/index_goods', function (req, res) {
-    HomeModel.find({}, function(err, data) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.send({
-                code: 200,
-                message: '数据请求成功',
-                success: true,
-                home: data
-            })
-        }
-    });
+  findMongodbData(HomeModel)
+      .then(data => {
+        res.send({
+          code: 200,
+          message: '数据请求成功',
+          success: true,
+          home: data
+        })
+      })
+
+    // HomeModel.find({}, function(err, data) {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         res.send({
+    //             code: 200,
+    //             message: '数据请求成功',
+    //             success: true,
+    //             home: data
+    //         })
+    //     }
+    // });
 })
 //分类
 router.get('/classify', function (req, res) {
