@@ -116,6 +116,42 @@ function partClassify(paramsId,model){
 
     })
 }
+//删除主页商品
+function deleteGoods(paramsId) {
+    HomeModel.remove({id: paramsId}, function (err) {
+        if(err){
+            console.log(err)
+        }
+        console.log('主页商品删除成功')
+    })
+    DetailModel.remove({id: paramsId}, function (err) {
+        if(err){
+            console.log(err)
+        }
+        console.log('详情商品删除成功')
+    })
+    ClassifyModel.update({},{$pull:{"rigth_data": {"id": paramsId}}},{multer: true},function (err, doc) {
+        if(err){
+            console.log(err)
+        }else {
+            console.log(doc)
+            console.log('分类商品删除成功')
+        }
+
+    })
+    PhoneModel.remove({lower_data: paramsId}, function (err) {
+        if(err){
+            console.log(err)
+        }
+        console.log('手机删除成功')
+    })
+    PartModel.remove({PartsLower_data: paramsId},function (err) {
+        if(err){
+            console.log(err)
+        }
+        console.log('配件删除成功')
+    })
+}
 
 //上传图片接口
 router.post('/uploadHomeImg', upload.single('file'),function (req, res) {
@@ -278,5 +314,17 @@ router.post('/publishGoods', function (req, res) {
         detailIntroduction = []
     })
 
+})
+//删除商品
+router.post('/deleteGoods', function (req, res) {
+    console.log(req.body)
+    deleteGoods(req.body.id)
+    // deleteDetailGoods(req.body.id)
+    res.send({
+        code: 0,
+        message: '删除商品成功',
+        success: true,
+        data: null
+    })
 })
 module.exports = router;
