@@ -130,14 +130,12 @@ function deleteGoods(paramsId) {
         }
         console.log('详情商品删除成功')
     })
-    ClassifyModel.update({},{$pull:{"rigth_data": {"id": paramsId}}},{multer: true},function (err, doc) {
+    ClassifyModel.update({"id": "1"},{$pull:{"right.$.rigth_data": {"id":paramsId}}},function(err, result){
         if(err){
-            console.log(err)
-        }else {
-            console.log(doc)
-            console.log('分类商品删除成功')
+            console.log("错误"+err)
         }
-
+        console.log(result)
+        console.log('删除分类成功')
     })
     PhoneModel.remove({lower_data: paramsId}, function (err) {
         if(err){

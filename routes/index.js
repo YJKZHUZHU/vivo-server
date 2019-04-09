@@ -2597,95 +2597,151 @@ router.get('/index_goods', function (req, res) {
 })
 //分类
 router.get('/classify', function (req, res) {
-    ClassifyModel.find({}, function(err, data) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.send({
-                code: 200,
-                message: '数据请求成功',
-                success: true,
-                classify: data
-            })
-        }
-    });
+  findMongodbData(ClassifyModel)
+      .then(data => {
+        res.send({
+          code: 200,
+          message: '数据请求成功',
+          success: true,
+          classify: data
+        })
+      })
+    // ClassifyModel.find({}, function(err, data) {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         res.send({
+    //             code: 200,
+    //             message: '数据请求成功',
+    //             success: true,
+    //             classify: data
+    //         })
+    //     }
+    // });
 })
 //动态
 router.get('/news', function (req, res) {
-    newsModel.find({}, function(err, data) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.send({
-                code: 200,
-                message: '数据请求成功',
-                success: true,
-                news: data,
-                totalCount: data.length
-            })
-        }
-    });
+  findMongodbData(newsModel)
+      .then(data => {
+        res.send({
+          code: 200,
+          message: '数据请求成功',
+          success: true,
+          news: data,
+          totalCount: data.length
+        })
+      })
+    // newsModel.find({}, function(err, data) {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         res.send({
+    //             code: 200,
+    //             message: '数据请求成功',
+    //             success: true,
+    //             news: data,
+    //             totalCount: data.length
+    //         })
+    //     }
+    // });
 })
 //详情
 router.get('/goodDetail', function (req, res) {
-    goodDetailModel.find({}, function(err, data) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.send({
-                code: 200,
-                message: '数据请求成功',
-                success: true,
-                goodDetail: data,
-                totalCount: data.length
-            })
-        }
-    });
+  findMongodbData(goodDetailModel)
+      .then(data => {
+        res.send({
+          code: 200,
+          message: '数据请求成功',
+          success: true,
+          goodDetail: data,
+          totalCount: data.length
+        })
+      })
+    // goodDetailModel.find({}, function(err, data) {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         res.send({
+    //             code: 200,
+    //             message: '数据请求成功',
+    //             success: true,
+    //             goodDetail: data,
+    //             totalCount: data.length
+    //         })
+    //     }
+    // });
 })
 //以旧换新
 router.get('/change', function (req, res) {
-    ChangeModel.find({}, function(err, data) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.send({
-                code: 200,
-                message: '数据请求成功',
-                success: true,
-                change: data
-            })
-        }
-    });
+  findMongodbData(ChangeModel)
+      .then(data => {
+        res.send({
+          code: 200,
+          message: '数据请求成功',
+          success: true,
+          change: data
+        })
+      })
+    // ChangeModel.find({}, function(err, data) {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         res.send({
+    //             code: 200,
+    //             message: '数据请求成功',
+    //             success: true,
+    //             change: data
+    //         })
+    //     }
+    // });
 })
 //获取手机分类列表
 router.get('/phone', function (req, res) {
-    phoneModel.find({}, function(err, data) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.send({
-                code: 200,
-                message: '数据请求成功',
-                success: true,
-                phone: data
-            })
-        }
-    });
+  findMongodbData(phoneModel)
+      .then(data => {
+        res.send({
+          code: 200,
+          message: '数据请求成功',
+          success: true,
+          phone: data
+        })
+      })
+    // phoneModel.find({}, function(err, data) {
+    //     if(err) {
+    //         console.log(err);
+    //     } else {
+    //         res.send({
+    //             code: 200,
+    //             message: '数据请求成功',
+    //             success: true,
+    //             phone: data
+    //         })
+    //     }
+    // });
 })
 //获取配件分类列表
 router.get('/part', function (req, res) {
-  partModel.find({}, function(err, data) {
-    if(err) {
-      console.log(err);
-    } else {
-      res.send({
-        code: 200,
-        message: '数据请求成功',
-        success: true,
-        parts: data
+  findMongodbData(partModel)
+      .then(data => {
+        res.send({
+          code: 200,
+          message: '数据请求成功',
+          success: true,
+          parts: data
+        })
       })
-    }
-  });
+  // partModel.find({}, function(err, data) {
+  //   if(err) {
+  //     console.log(err);
+  //   } else {
+  //     res.send({
+  //       code: 200,
+  //       message: '数据请求成功',
+  //       success: true,
+  //       parts: data
+  //     })
+  //   }
+  // });
 })
 
 
