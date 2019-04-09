@@ -6,6 +6,7 @@ const DetailModel = require('../db/goodDetail')
 const ClassifyModel = require('../db/classify')
 const PhoneModel = require('../db/phone')
 const PartModel = require('../db/part')
+const  deleteModel = require('../db/deleteMongoData')
 const upload = multer({
     // dest: 'G:/vivoImg'
     dest: 'C:/vivoImg'
@@ -17,6 +18,7 @@ var detailSwipe = [] //接收详情轮播图
 var detailIntroduction = [] //接收详情介绍图片
 //存储最大的ID值
 var homeId = ''
+
 //存储到mongo
 function saveToMongo(obj,model) {
     (new model(obj)).save(function (err) {
@@ -130,13 +132,13 @@ function deleteGoods(paramsId) {
         }
         console.log('详情商品删除成功')
     })
-    ClassifyModel.update({"id": "1"},{$pull:{"right.$.rigth_data": {"id":paramsId}}},function(err, result){
-        if(err){
-            console.log("错误"+err)
-        }
-        console.log(result)
-        console.log('删除分类成功')
-    })
+    // ClassifyModel.update({"id": "1"},{$pull:{"right.$.rigth_data": {"id":paramsId}}},function(err, result){
+    //     if(err){
+    //         console.log("错误"+err)
+    //     }
+    //     console.log(result)
+    //     console.log('删除分类成功')
+    // })
     PhoneModel.remove({lower_data: paramsId}, function (err) {
         if(err){
             console.log(err)
@@ -317,6 +319,7 @@ router.post('/publishGoods', function (req, res) {
 router.post('/deleteGoods', function (req, res) {
     console.log(req.body)
     deleteGoods(req.body.id)
+    deleteModel.deleteClassifyData(req.body.id)
     // deleteDetailGoods(req.body.id)
     res.send({
         code: 0,
