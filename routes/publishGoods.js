@@ -38,7 +38,7 @@ function setClassify(paramsId,paramsImg,paramsName,ID){
         for(var i=0;i<data[0].right.length;i++ ) {
             if (paramsId == i){
                 // ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
-                ClassifyModel.update({"id": "1", "right.id": paramsId},{"$push":{"right.$.rigth_data": {"id":ID,"img":paramsImg,"name":paramsName}}},function(err, result){
+                ClassifyModel.update({"id": "1", "right.id": paramsId},{"$push":{"right.$.right_data": {"id":ID,"img":paramsImg,"name":paramsName}}},function(err, result){
                     if(err){
                         console.log(err)
                     }
@@ -46,7 +46,7 @@ function setClassify(paramsId,paramsImg,paramsName,ID){
                     console.log('更新部分成功')
                 })
 
-                ClassifyModel.update({"id": "1", "right.id": "0"},{"$push":{"right.$.rigth_data": {"id":ID,"img":paramsImg,"name":paramsName}}},function(err, result){
+                ClassifyModel.update({"id": "1", "right.id": "0"},{"$push":{"right.$.right_data": {"id":ID,"img":paramsImg,"name":paramsName}}},function(err, result){
                     if(err){
                         console.log(err)
                     }
@@ -120,37 +120,87 @@ function partClassify(paramsId,model){
 }
 //删除主页商品
 function deleteGoods(paramsId) {
-    HomeModel.remove({id: paramsId}, function (err) {
-        if(err){
-            console.log(err)
-        }
-        console.log('主页商品删除成功')
-    })
-    DetailModel.remove({id: paramsId}, function (err) {
-        if(err){
-            console.log(err)
-        }
-        console.log('详情商品删除成功')
-    })
-    // ClassifyModel.update({"id": "1"},{$pull:{"right.$.rigth_data": {"id":paramsId}}},function(err, result){
+    // HomeModel.remove({id: paramsId}, function (err) {
+    //     if(err){
+    //         console.log(err)
+    //     }
+    //     console.log('主页商品删除成功')
+    // })
+    // DetailModel.remove({id: paramsId}, function (err) {
+    //     if(err){
+    //         console.log(err)
+    //     }
+    //     console.log('详情商品删除成功')
+    // })
+    // ClassifyModel.updateOne({
+    //     "id": "1",
+    //     "right.right_data.id": paramsId},{
+    //     "$pull": {"right.$.right_data": {"id":paramsId}}},{"multi": true},function(err, result){
     //     if(err){
     //         console.log("错误"+err)
+    //     }else {
+    //         console.log(result)
+    //         console.log('删除分类成功')
     //     }
-    //     console.log(result)
-    //     console.log('删除分类成功')
+    //
     // })
-    PhoneModel.remove({lower_data: paramsId}, function (err) {
-        if(err){
+    ClassifyModel.find({}, function (err, data) {
+        if (err){
             console.log(err)
+        }else {
+            for(var i in data[0].right){
+                for(var j in data[0].right[i].right_data){
+                    // console.log(paramsId)
+                    if(data[0].right[i].right_data[j].id == paramsId){
+                        var index = data[0].right[i].right_data.indexOf(paramsId)
+                        if(index > -1){
+                            data[0].right[i].right_data.splice(index,1)
+                        }
+                        (new ClassifyModel(data[0])).save(function (err) {
+                        if(err){
+                            console.log(err)
+                            return
+                        }else {
+                            console.log('尽进来了')
+                        }
+                    })
+                        // console.log('尽进来了')
+                        // ClassifyModel.update({"id": "1", "right.id": data[0].right[i].id},{"$pull":{"right.$.right_data": {"id":paramsId}}},{"multi": true},function(err, result){
+                        //     if(err){
+                        //         console.log("错误"+err)
+                        //     }else {
+                        //         console.log(result)
+                        //         console.log('删除分类成功')
+                        //     }
+                        //
+                        // })
+                    }
+                    // ClassifyModel.remove({data[0].right[i][j].id: paramsId},function (err, data) {
+                    //     if(err){
+                    //         console.log(err)
+                    //     }else {
+                    //         console.log(data)
+                    //         console.log('删除分类成功')
+                    //     }
+                    // })
+                }
+            }
+            // console.log(data[0].right[0].right_data)
+
         }
-        console.log('手机删除成功')
     })
-    PartModel.remove({PartsLower_data: paramsId},function (err) {
-        if(err){
-            console.log(err)
-        }
-        console.log('配件删除成功')
-    })
+    // PhoneModel.remove({lower_data: paramsId}, function (err) {
+    //     if(err){
+    //         console.log(err)
+    //     }
+    //     console.log('手机删除成功')
+    // })
+    // PartModel.remove({PartsLower_data: paramsId},function (err) {
+    //     if(err){
+    //         console.log(err)
+    //     }
+    //     console.log('配件删除成功')
+    // })
 }
 
 //上传图片接口
@@ -319,7 +369,8 @@ router.post('/publishGoods', function (req, res) {
 router.post('/deleteGoods', function (req, res) {
     console.log(req.body)
     deleteGoods(req.body.id)
-    deleteModel.deleteClassifyData(req.body.id)
+    // deleteModel.deleteClassifyData(req.body.id)
+
     // deleteDetailGoods(req.body.id)
     res.send({
         code: 0,
