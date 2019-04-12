@@ -18,7 +18,15 @@ var detailSwipe = [] //接收详情轮播图
 var detailIntroduction = [] //接收详情介绍图片
 //存储最大的ID值
 var homeId = ''
-
+function saveToMongo(obj,model) {
+    (new model(obj)).save(function (err) {
+        if (err) {
+            console.log(err)
+            return
+        }
+        console.log('数据插入成功')
+    })
+}
 //存储到mongo
 function saveToMongo(obj,model) {
     (new model(obj)).save(function (err) {
@@ -150,20 +158,25 @@ function deleteGoods(paramsId) {
         }else {
             for(var i in data[0].right){
                 for(var j in data[0].right[i].right_data){
-                    // console.log(paramsId)
+                    console.log("paramsId0:"+paramsId)
+                    // console.log(data[0].right[i].right_data[j].id)
                     if(data[0].right[i].right_data[j].id == paramsId){
-                        var index = data[0].right[i].right_data.indexOf(paramsId)
-                        if(index > -1){
-                            data[0].right[i].right_data.splice(index,1)
+                        data[0].right[i].right_data.splice(j,1)
+                        console.log(data[0].right[i].right_data)
+                        ClassifyModel.remove({},function (err,result) {
+                            if(err){
+                                console.log(err)
+                            }else {
+                                console.log(result)
+                            }
+                        })
+                        // console.log(JSON.stringify(data[0].right))
+                        var data = {
+                            "left": data[0].left,
+                            "right": data[0].right,
+                            "id": data[0].id
                         }
-                        (new ClassifyModel(data[0])).save(function (err) {
-                        if(err){
-                            console.log(err)
-                            return
-                        }else {
-                            console.log('尽进来了')
-                        }
-                    })
+                        saveToMongo(data,ClassifyModel)
                         // console.log('尽进来了')
                         // ClassifyModel.update({"id": "1", "right.id": data[0].right[i].id},{"$pull":{"right.$.right_data": {"id":paramsId}}},{"multi": true},function(err, result){
                         //     if(err){
