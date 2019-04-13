@@ -13,6 +13,15 @@ var newsDetailImg = [] //接收详情插图
 //存储最大的ID值
 var newsId = ''
 //存储到mongo
+//删除文章
+function deleteArticle(paramsId) {
+    NewsModel.remove({id: paramsId}, function (err) {
+        if(err){
+            console.log(err)
+        }
+        console.log('删除文章成功')
+    })
+}
 function saveToMongo(obj,model) {
     (new model(obj)).save(function (err) {
         if (err) {
@@ -24,7 +33,6 @@ function saveToMongo(obj,model) {
 }
 //上传图片接口
 router.post('/uploadNewsImg', upload.single('file'),function (req, res) {
-    console.log(req.headers.host)
     var fileName = new Date().getTime() + '_' + req.file.originalname;
     var imgUrl = 'http://'+ req.headers.host + '/vivo-img/'+fileName
     newsImg = imgUrl
@@ -33,7 +41,6 @@ router.post('/uploadNewsImg', upload.single('file'),function (req, res) {
             console.log('文件读取失败', err)
         } else {
             var des_file = path.resolve(__dirname, '../public/vivo-img/', fileName)
-            console.log(des_file)
             fs.writeFile(des_file, data, function(err) {
                 if(err) {
                     console.log('写入失败', err)
@@ -52,7 +59,6 @@ router.post('/uploadNewsImg', upload.single('file'),function (req, res) {
 })
 //详情图片接口
 router.post('/uploadNewsDetailImg', upload.single('file'),function (req, res) {
-   console.log(req.body)
     if (JSON.parse(req.body.newsDetailLength).newsDetailLength > 5) {
         newsDetailImg = []
         res.send({
@@ -72,7 +78,6 @@ router.post('/uploadNewsDetailImg', upload.single('file'),function (req, res) {
                 console.log('文件读取失败', err)
             } else {
                 var des_file = path.resolve(__dirname, '../public/vivo-img/', fileName)
-                console.log(des_file)
                 fs.writeFile(des_file, data, function(err) {
                     if(err) {
                         console.log('写入失败', err)
@@ -94,7 +99,6 @@ router.post('/uploadNewsDetailImg', upload.single('file'),function (req, res) {
 })
 //发布动态
 router.post('/publishAritcle', function (req, res) {
-    console.log(req.body)
     //找到最大的ID值
     NewsModel.find({}, function (err,data) {
         if (err) {
@@ -112,7 +116,6 @@ router.post('/publishAritcle', function (req, res) {
                 return n
             })
         }
-        console.log(req.body.newsDetail)
         var newsDetail = ''
         for(var i in req.body.newsDetail) {
             newsDetail +=`<img src='${newsDetailImg[i].list}' style='width:100%;margin-bottom: 10px' ><p style='margin-bottom: 10px';>${req.body.newsDetail[i]}</p>`
@@ -136,6 +139,16 @@ router.post('/publishAritcle', function (req, res) {
         //    清空图片
         newsImg = null
         newsDetailImg = []
+    })
+})
+//删除文章接口
+router.post('/deleteArticle', function (req, res) {
+    deleteArticle(req.body.id)
+    res.send({
+        code: 0,
+        message: '删除文章成功',
+        success: true,
+        data: null
     })
 })
 module.exports = router;

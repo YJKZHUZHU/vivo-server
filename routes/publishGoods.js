@@ -27,17 +27,6 @@ function saveToMongo(obj,model) {
         console.log('数据插入成功')
     })
 }
-//存储到mongo
-function saveToMongo(obj,model) {
-    (new model(obj)).save(function (err) {
-        if (err) {
-            console.log(err)
-            return
-        }
-        console.log('数据插入成功')
-    })
-}
-//判定分类
 function setClassify(paramsId,paramsImg,paramsName,ID){
     ClassifyModel.find({}, function (err, data) {
         if(err){
@@ -50,7 +39,6 @@ function setClassify(paramsId,paramsImg,paramsName,ID){
                     if(err){
                         console.log(err)
                     }
-                    console.log(result)
                     console.log('更新部分成功')
                 })
 
@@ -74,10 +62,6 @@ function phoneClassify(paramsId,paramsImg,paramsName,ID,paramsNameTwo,paramsPric
         }
         for(var i = 1; i < data[0].lower.length; i++ ) {
             if (i == paramsId ){
-                console.log('i='+i)
-                console.log('paramsId='+paramsId,data[0].lower[i])
-                console.log('相等')
-                // ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
                 PhoneModel.update({"id": "1", "lower.id": paramsId},{"$push":{"lower.$.lower_data": {"id":ID,"ImageOne":paramsImg,"name":paramsName,"nameTwo":paramsNameTwo,"price":paramsPrice}}},function(err, result){
                     if(err){
                         console.log(err)
@@ -98,16 +82,12 @@ function phoneClassify(paramsId,paramsImg,paramsName,ID,paramsNameTwo,paramsPric
 }
 //配件
 function partClassify(paramsId,model){
-    console.log("model:"+ JSON.stringify(model))
     PartModel.find({}, function (err, data) {
         if(err){
             console.log(err)
         }
-        console.log(data[0].PartsLower.length+3,model.paramsId)
         for(var i = 4; i < data[0].PartsLower.length+3; i++ ) {
             if (i == paramsId ){
-                console.log('相等')
-                // ClassifyModel.update({"id": "1"},{$push:{right: {right_data:{id:paramsId,img:paramsImg,name:paramsName}}}},function (err,result) {
                 PartModel.update({"id": "1", "PartsLower.id": paramsId},{"$push":{"PartsLower.$.PartsLower_data": model}},function(err, result){
                     if(err){
                         console.log(err)
@@ -128,97 +108,101 @@ function partClassify(paramsId,model){
 }
 //删除主页商品
 function deleteGoods(paramsId) {
-    // HomeModel.remove({id: paramsId}, function (err) {
-    //     if(err){
-    //         console.log(err)
-    //     }
-    //     console.log('主页商品删除成功')
-    // })
-    // DetailModel.remove({id: paramsId}, function (err) {
-    //     if(err){
-    //         console.log(err)
-    //     }
-    //     console.log('详情商品删除成功')
-    // })
-    // ClassifyModel.updateOne({
-    //     "id": "1",
-    //     "right.right_data.id": paramsId},{
-    //     "$pull": {"right.$.right_data": {"id":paramsId}}},{"multi": true},function(err, result){
-    //     if(err){
-    //         console.log("错误"+err)
-    //     }else {
-    //         console.log(result)
-    //         console.log('删除分类成功')
-    //     }
-    //
-    // })
+    HomeModel.remove({id: paramsId}, function (err) {
+        if(err){
+            console.log(err)
+        }
+        console.log('主页商品删除成功')
+    })
+    DetailModel.remove({id: paramsId}, function (err) {
+        if(err){
+            console.log(err)
+        }
+        console.log('详情商品删除成功')
+    })
     ClassifyModel.find({}, function (err, data) {
         if (err){
             console.log(err)
         }else {
             for(var i in data[0].right){
                 for(var j in data[0].right[i].right_data){
-                    console.log("paramsId0:"+paramsId)
-                    // console.log(data[0].right[i].right_data[j].id)
                     if(data[0].right[i].right_data[j].id == paramsId){
                         data[0].right[i].right_data.splice(j,1)
-                        console.log(data[0].right[i].right_data)
-                        ClassifyModel.remove({},function (err,result) {
-                            if(err){
-                                console.log(err)
-                            }else {
-                                console.log(result)
-                            }
-                        })
-                        // console.log(JSON.stringify(data[0].right))
-                        var data = {
-                            "left": data[0].left,
-                            "right": data[0].right,
-                            "id": data[0].id
-                        }
-                        saveToMongo(data,ClassifyModel)
-                        // console.log('尽进来了')
-                        // ClassifyModel.update({"id": "1", "right.id": data[0].right[i].id},{"$pull":{"right.$.right_data": {"id":paramsId}}},{"multi": true},function(err, result){
-                        //     if(err){
-                        //         console.log("错误"+err)
-                        //     }else {
-                        //         console.log(result)
-                        //         console.log('删除分类成功')
-                        //     }
-                        //
-                        // })
                     }
-                    // ClassifyModel.remove({data[0].right[i][j].id: paramsId},function (err, data) {
-                    //     if(err){
-                    //         console.log(err)
-                    //     }else {
-                    //         console.log(data)
-                    //         console.log('删除分类成功')
-                    //     }
-                    // })
                 }
             }
-            // console.log(data[0].right[0].right_data)
-
+            ClassifyModel.remove({},function (err,result) {
+                if(err){
+                    console.log(err)
+                }else {
+                    console.log(result)
+                }
+            })
+            var data = {
+                "left": data[0].left,
+                "right": data[0].right,
+                "id": data[0].id
+            }
+            saveToMongo(data,ClassifyModel)
         }
     })
-    // PhoneModel.remove({lower_data: paramsId}, function (err) {
-    //     if(err){
-    //         console.log(err)
-    //     }
-    //     console.log('手机删除成功')
-    // })
-    // PartModel.remove({PartsLower_data: paramsId},function (err) {
-    //     if(err){
-    //         console.log(err)
-    //     }
-    //     console.log('配件删除成功')
-    // })
+    PhoneModel.find({}, function (err, data) {
+        if (err){
+            console.log(err)
+        }else {
+            for(var i in data[0].lower){
+                for(var j in data[0].lower[i].lower_data){
+                    if(data[0].lower[i].lower_data[j].id == paramsId){
+                        data[0].lower[i].lower_data.splice(j,1)
+                    }
+                }
+            }
+            PhoneModel.remove({},function (err,result) {
+                if(err){
+                    console.log(err)
+                }else {
+                    console.log(result)
+                }
+            })
+            var data = {
+                "upper": data[0].upper,
+                "lower": data[0].lower,
+                "id": data[0].id
+            }
+            saveToMongo(data,PhoneModel)
+        }
+    })
+    PartModel.find({}, function (err, data) {
+        if (err){
+            console.log(err)
+        }else {
+            for(var i in data[0].PartsLower){
+                for(var j in data[0].PartsLower[i].PartsLower_data){
+                    if(data[0].PartsLower[i].PartsLower_data[j].id == paramsId){
+                        data[0].PartsLower[i].PartsLower_data.splice(j,1)
+                    }
+                }
+            }
+            PartModel.remove({},function (err,result) {
+                if(err){
+                    console.log(err)
+                }else {
+                    console.log(result)
+                }
+            })
+            var data = {
+                "PartsUpper": data[0].PartsUpper,
+                "PartsLower": data[0].PartsLower,
+                "id": data[0].id
+            }
+            saveToMongo(data,PartModel)
+        }
+    })
+
 }
 
 //上传图片接口
 router.post('/uploadHomeImg', upload.single('file'),function (req, res) {
-    console.log(req.headers.host)
     var fileName = new Date().getTime() + '_' + req.file.originalname;
     var imgUrl = 'http://'+ req.headers.host + '/vivo-img/'+fileName
     homeImg = imgUrl
@@ -227,7 +211,6 @@ router.post('/uploadHomeImg', upload.single('file'),function (req, res) {
             console.log('文件读取失败', err)
         } else {
             var des_file = path.resolve(__dirname, '../public/vivo-img/', fileName)
-            console.log(des_file)
             fs.writeFile(des_file, data, function(err) {
                 if(err) {
                     console.log('写入失败', err)
@@ -246,8 +229,6 @@ router.post('/uploadHomeImg', upload.single('file'),function (req, res) {
 })
 //详情图片接口
 router.post('/uploadDetailImg', upload.single('file'),function (req, res) {
-    console.log(JSON.parse(req.body.swiperLength).swiperLength)
-
     if (JSON.parse(req.body.swiperLength).swiperLength > 5) {
         detailSwipe = []
         res.send({
@@ -267,7 +248,6 @@ router.post('/uploadDetailImg', upload.single('file'),function (req, res) {
                 console.log('文件读取失败', err)
             } else {
                 var des_file = path.resolve(__dirname, '../public/vivo-img/', fileName)
-                console.log(des_file)
                 fs.writeFile(des_file, data, function(err) {
                     if(err) {
                         console.log('写入失败', err)
@@ -289,7 +269,6 @@ router.post('/uploadDetailImg', upload.single('file'),function (req, res) {
 })
 //详情介绍接口
 router.post('/uploadDetailIntroduction', upload.single('file'),function (req, res) {
-    console.log(JSON.parse(req.body.detailLength).detailLength)
     if (JSON.parse(req.body.detailLength).detailLength > 10) {
         detailIntroduction = []
         res.send({
@@ -309,7 +288,6 @@ router.post('/uploadDetailIntroduction', upload.single('file'),function (req, re
                 console.log('文件读取失败', err)
             } else {
                 var des_file = path.resolve(__dirname, '../public/vivo-img/', fileName)
-                console.log(des_file)
                 fs.writeFile(des_file, data, function(err) {
                     if(err) {
                         console.log('写入失败', err)
@@ -380,11 +358,7 @@ router.post('/publishGoods', function (req, res) {
 })
 //删除商品
 router.post('/deleteGoods', function (req, res) {
-    console.log(req.body)
     deleteGoods(req.body.id)
-    // deleteModel.deleteClassifyData(req.body.id)
-
-    // deleteDetailGoods(req.body.id)
     res.send({
         code: 0,
         message: '删除商品成功',
