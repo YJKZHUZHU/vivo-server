@@ -40,7 +40,8 @@ const userSchema = mongoose.Schema({
   // 密码
   'pwd': {type: String},
   // 类型
-  'phone': {'type': String}
+  'phone': {'type': String},
+    'pattonLoginOrRegisterTime': {'type': String}
 })
 UserModel = mongoose.model('user', userSchema)
 
