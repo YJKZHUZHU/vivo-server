@@ -2538,7 +2538,7 @@ router.get('/sendcode', function (req, res, next) {
 短信登陆
 */
 router.post('/login_sms', function (req, res, next) {
-  var phone = req.body.phone+'(验证码登入)';
+  var phone = req.body.phone;
   var code = req.body.code;
   const loginOrRegisterTime = new Date()
   const pattonLoginOrRegisterTime = loginOrRegisterTime.pattern('yyyy-MM-dd hh:mm:ss')
@@ -2598,6 +2598,51 @@ router.get('/userList', function (req, res) {
       "data": data
     })
   })
+})
+//删除用户
+router.post('/deleteUser', function (req, res) {
+  UserModel.remove({_id: req.body._id}, function (err, result) {
+    if (err) {
+      console.log(err)
+    }else {
+      res.send({
+        code: 0,
+        message: '删除用户成功',
+        success: true,
+        data: null
+      })
+    }
+  })
+})
+//搜索用户
+router.post('/searchUser', function (req, res) {
+  console.log(req.body)
+  const data = req.body
+  //都存在
+
+  if (data.id || data.usename){
+    UserModel.find({_id:data.id,name:data.usename}, function (err, result) {
+      if (err){
+        console.log(err)
+      }else {
+        console.log("哈哈"+result)
+        res.send({
+          code: 0,
+          message: '搜索用户成功',
+          success: true,
+          data: result
+        })
+      }
+    })
+  }else {
+    res.send({
+      code: -1,
+      message: '用户不存在',
+      success: false,
+      data: null
+    })
+  }
+
 })
 
 
