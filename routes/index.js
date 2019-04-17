@@ -2419,15 +2419,50 @@ function findMongodbData (model) {
 // setData.forEach(function (ele) {
 //   saveToMongo(ele, setModel)
 // })
-
+//时间格式化
+Date.prototype.pattern=function(fmt) {
+  var o = {
+    "M+" : this.getMonth()+1, //月份
+    "d+" : this.getDate(), //日
+    "h+" : this.getHours()%12 == 0 ? 12 : this.getHours()%12, //小时
+    "H+" : this.getHours(), //小时
+    "m+" : this.getMinutes(), //分
+    "s+" : this.getSeconds(), //秒
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+    "S" : this.getMilliseconds() //毫秒
+  };
+  var week = {
+    "0" : "/u65e5",
+    "1" : "/u4e00",
+    "2" : "/u4e8c",
+    "3" : "/u4e09",
+    "4" : "/u56db",
+    "5" : "/u4e94",
+    "6" : "/u516d"
+  };
+  if(/(y+)/.test(fmt)){
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  }
+  if(/(E+)/.test(fmt)){
+    fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "/u661f/u671f" : "/u5468") : "")+week[this.getDay()+""]);
+  }
+  for(var k in o){
+    if(new RegExp("("+ k +")").test(fmt)){
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+    }
+  }
+  return fmt;
+}
 /*
 密码登陆
  */
 router.post('/login_pwd', function (req, res) {
   const name = req.body.name
   const pwd = md5(req.body.pwd)
+  const loginOrRegisterTime = new Date()
+  const pattonLoginOrRegisterTime = loginOrRegisterTime.pattern('yyyy-MM-dd hh:mm:ss')
   const captcha = req.body.captcha.toLowerCase()
-  console.log('/login_pwd', name, pwd, captcha, req.session)
+  console.log('/login_pwd', name, pwd, captcha, req.session,pattonLoginOrRegisterTime)
 
   // 可以对用户名/密码格式进行检查, 如果非法, 返回提示信息
   if(captcha!==req.session.captcha) {
@@ -2446,12 +2481,12 @@ router.post('/login_pwd', function (req, res) {
         res.send({code: 0, data: {_id: user._id, name: user.name, phone: user.phone}})
       }
     } else {
-      const userModel = new UserModel({name, pwd})
+      const userModel = new UserModel({name, pwd,pattonLoginOrRegisterTime})
       userModel.save(function (err, user) {
         // 向浏览器端返回cookie(key=value)
         // res.cookie('userid', user._id, {maxAge: 1000*60*60*24*7})
         req.session.userid = user._id
-        const data = {_id: user._id, name: user.name}
+        const data = {_id: user._id, name: user.name,loginOrRegister: user.pattonLoginOrRegisterTime}
         // 3.2. 返回数据(新的user)
         res.send({code: 0, data})
       })
@@ -2503,8 +2538,10 @@ router.get('/sendcode', function (req, res, next) {
 短信登陆
 */
 router.post('/login_sms', function (req, res, next) {
-  var phone = req.body.phone;
+  var phone = req.body.phone+'(验证码登入)';
   var code = req.body.code;
+  const loginOrRegisterTime = new Date()
+  const pattonLoginOrRegisterTime = loginOrRegisterTime.pattern('yyyy-MM-dd hh:mm:ss')
   console.log('/login_sms', phone, code);
   if (users[phone] != code) {
     res.send({code: 1, msg: '手机号或验证码不正确'});
@@ -2520,7 +2557,7 @@ router.post('/login_sms', function (req, res, next) {
       res.send({code: 0, data: user})
     } else {
       //存储数据
-      const userModel = new UserModel({phone})
+      const userModel = new UserModel({phone,pattonLoginOrRegisterTime})
       userModel.save(function (err, user) {
         req.session.userid = user._id
         res.send({code: 0, data: user})
@@ -2548,6 +2585,18 @@ router.get('/userinfo', function (req, res) {
       // 如果有, 返回user
       res.send({code: 0, data: user})
     }
+  })
+})
+//用户列表
+router.get('/userList', function (req, res) {
+  findMongodbData(UserModel).then(data => {
+    const count = Object.keys(data).length
+    res.send({
+      "code": 200,
+      "msg": '数据请求成功',
+      "count": count,
+      "data": data
+    })
   })
 })
 
