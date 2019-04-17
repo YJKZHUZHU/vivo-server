@@ -2618,31 +2618,51 @@ router.post('/deleteUser', function (req, res) {
 router.post('/searchUser', function (req, res) {
   console.log(req.body)
   const data = req.body
-  //都存在
-
-  if (data.id || data.usename){
-    UserModel.find({_id:data.id,name:data.usename}, function (err, result) {
-      if (err){
-        console.log(err)
-      }else {
-        console.log("哈哈"+result)
+  console.log(data.id, data.username)
+  UserModel.find({"_id":data.id,"name":data.username}, function (err, docs) {
+    if (err){
+      console.log(err)
+    }else {
+      console.log(docs)
+      if (docs != '[]'){
         res.send({
           code: 0,
           message: '搜索用户成功',
           success: true,
-          data: result
+          data: docs
         })
+      }else {
+          res.send({
+            code: -1,
+            message: '用户不存在',
+            success: false,
+            data: docs
+          })
       }
-    })
-  }else {
-    res.send({
-      code: -1,
-      message: '用户不存在',
-      success: false,
-      data: null
-    })
-  }
 
+
+
+      // if (docs) {
+      //   res.send({
+      //     code: 0,
+      //     message: '搜索用户成功',
+      //     success: true,
+      //     data: docs
+      //   })
+      // } else {
+      //   console.log(1)
+      //   res.send({
+      //     code: -1,
+      //     message: '用户不存在',
+      //     success: false,
+      //     data: []
+      //   })
+      // }
+    }
+  })
+
+  // if (data.id || data.usename){
+  // }
 })
 
 
