@@ -2421,7 +2421,7 @@ function findMongodbData (model) {
 // setData.forEach(function (ele) {
 //   saveToMongo(ele, setModel)
 // })
-//时间格式化
+// 时间格式化
 Date.prototype.pattern=function(fmt) {
   var o = {
     "M+" : this.getMonth()+1, //月份
@@ -2650,7 +2650,7 @@ router.post('/searchUser', function (req, res) {
         }else {
           res.send({
             code: -1,
-            message: '用户不存在1',
+            message: '用户不存在',
             success: false,
             data: docs
           })
@@ -2674,7 +2674,7 @@ router.post('/searchUser', function (req, res) {
         }else {
           res.send({
             code: -1,
-            message: '用户不存在2',
+            message: '用户不存在',
             success: false,
             data: docs
           })
@@ -2696,7 +2696,7 @@ router.post('/searchUser', function (req, res) {
         }else {
           res.send({
             code: -1,
-            message: '用户不存在3',
+            message: '用户不存在',
             success: false,
             data: docs
           })
@@ -2927,7 +2927,7 @@ router.post('/getOrder', function (req, res) {
   const data = new Date()
   const orderTime = data.pattern('yyyy-MM-dd hh:mm:ss')
   req.body.orderTime = orderTime
-  console.log(req.body)
+  console.log(req.body.address)
   saveToMongo(req.body,orderModel)
   res.send({
     code: 200,
@@ -3009,7 +3009,7 @@ router.post('/searchOrder', function (req, res) {
         }else {
           res.send({
             code: -1,
-            message: '订单不存在1',
+            message: '订单不存在',
             success: false,
             data: docs
           })
@@ -3032,7 +3032,7 @@ router.post('/searchOrder', function (req, res) {
         }else {
           res.send({
             code: -1,
-            message: '订单不存在2',
+            message: '订单不存在',
             success: false,
             data: docs
           })
@@ -3054,7 +3054,7 @@ router.post('/searchOrder', function (req, res) {
         }else {
           res.send({
             code: -1,
-            message: '订单不存在3',
+            message: '订单不存在',
             success: false,
             data: docs
           })

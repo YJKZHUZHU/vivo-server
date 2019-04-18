@@ -10,6 +10,7 @@ const orderScheam = new mongoose.Schema({
     'orderTime': String,
     'userName': String,
     'orderNumber':String,
-    'ly': String
+    'ly': String,
+    'address':String
 })
 module.exports= mongoose.model('Order',orderScheam, 'order')
