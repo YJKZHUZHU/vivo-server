@@ -5,6 +5,7 @@ const models = require('../db/models')
 const UserModel = models.getModel('user')
 const _filter = {'pwd': 0, '__v': 0} // 查询时过滤掉
 const sms_util = require('../util/sms_util')
+var mongoose = require('mongoose')
 const users = {}
 const ajax = require('../api/ajax')
 var svgCaptcha = require('svg-captcha')
@@ -16,6 +17,7 @@ const newsModel = require('../db/news')
 const partModel = require('../db/part')
 const phoneModel = require('../db/phone')
 const setModel = require('../db/set')
+const orderModel = require('../db/order')
 //存储数据
 var homeData = [
   {
@@ -2589,14 +2591,26 @@ router.get('/userinfo', function (req, res) {
 })
 //用户列表
 router.get('/userList', function (req, res) {
-  findMongodbData(UserModel).then(data => {
-    const count = Object.keys(data).length
-    res.send({
-      "code": 200,
-      "msg": '数据请求成功',
-      "count": count,
-      "data": data
-    })
+  const limit = req.query.limit || 10
+  const currentPage = req.query.page || 1
+  UserModel.find({}, function (err,ress) {
+    if (err) {
+      console.log(err)
+    }else {
+      let all = ress.length
+      UserModel.find({}).skip((parseInt(currentPage)-1)*parseInt(limit)).limit(parseInt(limit)).exec(function (err, data) {
+        if (err) {
+          console.log(err)
+        }else {
+          res.send({
+            "code": 200,
+            "msg": '数据请求成功',
+            "count": all,
+            "data": data
+          })
+        }
+      })
+    }
   })
 })
 //删除用户
@@ -2619,47 +2633,98 @@ router.post('/searchUser', function (req, res) {
   console.log(req.body)
   const data = req.body
   console.log(data.id, data.username)
-  UserModel.find({"_id":data.id,"name":data.username}, function (err, docs) {
-    if (err){
-      console.log(err)
-    }else {
-      console.log(docs)
-      if (docs != '[]'){
-        res.send({
-          code: 0,
-          message: '搜索用户成功',
-          success: true,
-          data: docs
-        })
+  //都存在
+  if (data._id && data.username) {
+    console.log(mongoose.Types.ObjectId(data.id))
+    UserModel.find({"_id":mongoose.Types.ObjectId(data.id),"name":data.username}, function (err, docs) {
+      if (err){
+        console.log(err)
       }else {
+        if (docs.length !== 0){
+          res.send({
+            code: 0,
+            message: '搜索用户成功',
+            success: true,
+            data: docs
+          })
+        }else {
           res.send({
             code: -1,
-            message: '用户不存在',
+            message: '用户不存在1',
             success: false,
             data: docs
           })
+        }
       }
+    })
+  }else if (data.id) {
+    console.log(mongoose.Types.ObjectId(data.id))
+    UserModel.find({"_id":mongoose.Types.ObjectId(data.id)}, function (err, docs) {
+      console.log(docs)
+      if (err){
+        console.log(err)
+      }else {
+        if (docs.length != 0){
+          res.send({
+            code: 0,
+            message: '搜索用户成功',
+            success: true,
+            data: docs
+          })
+        }else {
+          res.send({
+            code: -1,
+            message: '用户不存在2',
+            success: false,
+            data: docs
+          })
+        }
+      }
+    })
+  }else if (data.username) {
+    UserModel.find({"name":data.username}, function (err, docs) {
+      if (err){
+        console.log(err)
+      }else {
+        if (docs.length !== 0){
+          res.send({
+            code: 0,
+            message: '搜索用户成功',
+            success: true,
+            data: docs
+          })
+        }else {
+          res.send({
+            code: -1,
+            message: '用户不存在3',
+            success: false,
+            data: docs
+          })
+        }
+      }
+    })
+  }else if(data.id == '' && data.username == '' ){
+    UserModel.find({}, function (err, docs) {
+      if (err){
+        console.log(err)
+      }else {
+        res.send({
+          code: 0,
+          message: '查询成功',
+          success: true,
+          data: docs
+        })
+      }
+    })
+  }else {
+    res.send({
+      code: 0,
+      message: '查询失败',
+      success: false,
+      data: []
+    })
+  }
 
-
-
-      // if (docs) {
-      //   res.send({
-      //     code: 0,
-      //     message: '搜索用户成功',
-      //     success: true,
-      //     data: docs
-      //   })
-      // } else {
-      //   console.log(1)
-      //   res.send({
-      //     code: -1,
-      //     message: '用户不存在',
-      //     success: false,
-      //     data: []
-      //   })
-      // }
-    }
-  })
 
   // if (data.id || data.usename){
   // }
@@ -2856,6 +2921,171 @@ router.get('/part', function (req, res) {
   //     })
   //   }
   // });
+})
+//收集订单
+router.post('/getOrder', function (req, res) {
+  const data = new Date()
+  const orderTime = data.pattern('yyyy-MM-dd hh:mm:ss')
+  req.body.orderTime = orderTime
+  console.log(req.body)
+  saveToMongo(req.body,orderModel)
+  res.send({
+    code: 200,
+    message: '订单提交成功',
+    success: true,
+    data: null
+  })
+  // orderModel.save(req.body, function (err, result) {
+  //   if (err) {
+  //     console.log(err)
+  //   }else {
+  //     res.send({
+  //       code: 200,
+  //       message: '订单提交成功',
+  //       success: true,
+  //       data: null
+  //     })
+  //   }
+  // })
+
+})
+//订单列表
+router.get('/orderList', function (req, res) {
+  const limit = req.query.limit || 10
+  const currentPage = req.query.page || 1
+  orderModel.find({}, function (err,ress) {
+    if (err) {
+      console.log(err)
+    }else {
+      let all = ress.length
+      orderModel.find({}).skip((parseInt(currentPage)-1)*parseInt(limit)).limit(parseInt(limit)).exec(function (err, data) {
+        if (err) {
+          console.log(err)
+        }else {
+          res.send({
+            "code": 200,
+            "msg": '数据请求成功',
+            "count": all,
+            "data": data
+          })
+        }
+      })
+    }
+  })
+})
+//订单删除
+router.post('/deleteOrder', function (req, res) {
+  orderModel.remove({_id: req.body._id}, function (err, result) {
+    if (err) {
+      console.log(err)
+    }else {
+      res.send({
+        code: 0,
+        message: '订单删除成功',
+        success: true,
+        data: null
+      })
+    }
+  })
+})
+//订单搜索
+router.post('/searchOrder', function (req, res) {
+  console.log(req.body)
+  const data = req.body
+  console.log(data.id, data.username)
+  //都存在
+  if (data._id && data.username) {
+    orderModel.find({"id": data.id,"userName":data.username}, function (err, docs) {
+      if (err){
+        console.log(err)
+      }else {
+        if (docs.length !== 0){
+          res.send({
+            code: 0,
+            message: '搜索订单成功',
+            success: true,
+            data: docs
+          })
+        }else {
+          res.send({
+            code: -1,
+            message: '订单不存在1',
+            success: false,
+            data: docs
+          })
+        }
+      }
+    })
+  }else if (data.id) {
+    orderModel.find({"id": data.id}, function (err, docs) {
+      console.log(docs)
+      if (err){
+        console.log(err)
+      }else {
+        if (docs.length != 0){
+          res.send({
+            code: 0,
+            message: '搜索订单成功',
+            success: true,
+            data: docs
+          })
+        }else {
+          res.send({
+            code: -1,
+            message: '订单不存在2',
+            success: false,
+            data: docs
+          })
+        }
+      }
+    })
+  }else if (data.username) {
+    orderModel.find({"userName":data.username}, function (err, docs) {
+      if (err){
+        console.log(err)
+      }else {
+        if (docs.length !== 0){
+          res.send({
+            code: 0,
+            message: '搜索订单成功',
+            success: true,
+            data: docs
+          })
+        }else {
+          res.send({
+            code: -1,
+            message: '订单不存在3',
+            success: false,
+            data: docs
+          })
+        }
+      }
+    })
+  }else if(data.id == '' && data.username == '' ){
+    orderModel.find({}, function (err, docs) {
+      if (err){
+        console.log(err)
+      }else {
+        res.send({
+          code: 0,
+          message: '查询成功',
+          success: true,
+          data: docs
+        })
+      }
+    })
+  }else {
+    res.send({
+      code: 0,
+      message: '查询失败',
+      success: false,
+      data: []
+    })
+  }
+
+
+  // if (data.id || data.usename){
+  // }
 })
 
 
