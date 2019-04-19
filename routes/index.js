@@ -2928,13 +2928,44 @@ router.post('/getOrder', function (req, res) {
   const orderTime = data.pattern('yyyy-MM-dd hh:mm:ss')
   req.body.orderTime = orderTime
   console.log(req.body.address)
-  saveToMongo(req.body,orderModel)
-  res.send({
-    code: 200,
-    message: '订单提交成功',
-    success: true,
-    data: null
+  var orderData = new orderModel(req.body)
+  orderModel.find({orderNumber: req.body.orderNumber}, function (err, data) {
+    if (err) {
+      console.log(err)
+    }else {
+      console.log(JSON.stringify(data),data.length)
+      if (data.length != 0){
+        orderModel.update({orderNumber: req.body.orderNumber},{$set: req.body}, function (err) {
+          if (err) {
+            console.log(err)
+          }else {
+            res.send({
+              code: 200,
+              message: '订单提交成功',
+              success: true,
+              data: null
+            })
+          }
+        })
+      }else {
+        orderData.save( function (err, result) {
+          if (err) {
+            console.log(err)
+          }else {
+            res.send({
+              code: 200,
+              message: '订单提交成功',
+              success: true,
+              data: null
+            })
+          }
+        })
+      }
+
+    }
   })
+  // saveToMongo(req.body,orderModel)
+
   // orderModel.save(req.body, function (err, result) {
   //   if (err) {
   //     console.log(err)
@@ -3086,6 +3117,22 @@ router.post('/searchOrder', function (req, res) {
 
   // if (data.id || data.usename){
   // }
+})
+//用户订单列表
+router.post('/getOrderList', function (req, res) {
+  console.log(req.body.userName)
+  orderModel.find({userName: req.body.userName}, function (err, data) {
+    if (err) {
+      console.log(err)
+    }else {
+      res.send({
+        "code": 200,
+        "msg": '数据请求成功',
+        "count": data.length,
+        "data": data
+      })
+    }
+  })
 })
 
 

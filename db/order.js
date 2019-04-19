@@ -11,6 +11,7 @@ const orderScheam = new mongoose.Schema({
     'userName': String,
     'orderNumber':String,
     'ly': String,
-    'address':String
+    'address':String,
+    'orderStatus': String
 })
 module.exports= mongoose.model('Order',orderScheam, 'order')
