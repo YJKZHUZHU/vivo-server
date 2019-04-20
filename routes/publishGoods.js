@@ -56,20 +56,21 @@ function setClassify(paramsId,paramsImg,paramsName,ID){
 }
 //手机
 function phoneClassify(paramsId,paramsImg,paramsName,ID,paramsNameTwo,paramsPrice){
+    console.log('手机ID：'+ID)
     PhoneModel.find({}, function (err, data) {
         if(err){
             console.log(err)
         }
         for(var i = 1; i < data[0].lower.length; i++ ) {
             if (i == paramsId ){
-                PhoneModel.update({"id": "1", "lower.id": paramsId},{"$push":{"lower.$.lower_data": {"id":ID,"ImageOne":paramsImg,"name":paramsName,"nameTwo":paramsNameTwo,"price":paramsPrice}}},function(err, result){
+                PhoneModel.update({"id": "1", "lower.id": paramsId},{"$push":{"lower.$.lower_data": {"id":ID,"ImageOne":paramsImg,"name":paramsName,"nameTwo":paramsNameTwo,"Price":paramsPrice}}},function(err, result){
                     if(err){
                         console.log(err)
                     }
                     console.log('手机分类成功')
                 })
                 //给全部手机添加一条
-                PhoneModel.update({"id": "1", "lower.id": '0'},{"$push":{"lower.$.lower_data": {"id":ID,"ImageOne":paramsImg,"name":paramsName,"nameTwo":paramsNameTwo,"price":paramsPrice}}},function(err, result){
+                PhoneModel.update({"id": "1", "lower.id": '0'},{"$push":{"lower.$.lower_data": {"id":ID,"ImageOne":paramsImg,"name":paramsName,"nameTwo":paramsNameTwo,"Price":paramsPrice}}},function(err, result){
                     if(err){
                         console.log(err)
                     }
@@ -321,7 +322,7 @@ router.post('/publishGoods', function (req, res) {
         homeId = Math.max.apply(Math, data.map(function (o) {
             return o.id
         }))
-        setClassify(req.body.classify,homeImg,req.body.homeName,homeId)
+        setClassify(req.body.classify,homeImg,req.body.homeName,homeId + 1)
         var home = {
             'isExit': req.body.isExit,
             'id': homeId+1,
@@ -338,7 +339,7 @@ router.post('/publishGoods', function (req, res) {
         if(req.body.classify >= 4){
             partClassify(req.body.classify,home)
         }else {
-            phoneClassify(req.body.classify,homeImg,req.body.homeName,homeId,req.body.homeNametwo,req.body.homePrice)
+            phoneClassify(req.body.classify,homeImg,req.body.homeName,homeId + 1,req.body.homeNametwo,req.body.homePrice)
         }
 
         saveToMongo(home,HomeModel)

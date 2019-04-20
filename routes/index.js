@@ -2826,30 +2826,124 @@ router.get('/news', function (req, res) {
 })
 //详情
 router.get('/goodDetail', function (req, res) {
-  findMongodbData(goodDetailModel)
-      .then(data => {
-        res.send({
-          code: 200,
-          message: '数据请求成功',
-          success: true,
-          goodDetail: data,
-          totalCount: data.length
-        })
+  const limit = req.query.limit
+  const currentPage = req.query.page
+  goodDetailModel.find({}, function (err,ress) {
+    if (err) {
+      console.log(err)
+    }else {
+      let all = ress.length
+      goodDetailModel.find({}).skip((parseInt(currentPage)-1)*parseInt(limit)).limit(parseInt(limit)).exec(function (err, data) {
+        if (err) {
+          console.log(err)
+        }else {
+          res.send({
+            "code": 200,
+            "msg": '数据请求成功',
+            "count": all,
+            "data": data
+          })
+        }
       })
-    // goodDetailModel.find({}, function(err, data) {
-    //     if(err) {
-    //         console.log(err);
-    //     } else {
-    //         res.send({
-    //             code: 200,
-    //             message: '数据请求成功',
-    //             success: true,
-    //             goodDetail: data,
-    //             totalCount: data.length
-    //         })
-    //     }
-    // });
+    }
+  })
 })
+//详情商品搜索
+router.post('/searchGoodDetail', function (req, res) {
+  console.log(req.body)
+  const data = req.body
+  console.log(data.id, data.homeName)
+  //都存在
+  if (data.id && data.homeName) {
+    goodDetailModel.find({"id": data.id,"homeName":data.homeName}, function (err, docs) {
+      if (err){
+        console.log(err)
+      }else {
+        if (docs.length !== 0){
+          res.send({
+            code: 0,
+            message: '搜索商品成功',
+            success: true,
+            data: docs
+          })
+        }else {
+          res.send({
+            code: -1,
+            message: '订单不存在',
+            success: false,
+            data: docs
+          })
+        }
+      }
+    })
+  }else if (data.id) {
+    goodDetailModel.find({"id": data.id}, function (err, docs) {
+      console.log(docs)
+      if (err){
+        console.log(err)
+      }else {
+        if (docs.length != 0){
+          res.send({
+            code: 0,
+            message: '搜索订单成功',
+            success: true,
+            data: docs
+          })
+        }else {
+          res.send({
+            code: -1,
+            message: '商品不存在',
+            success: false,
+            data: docs
+          })
+        }
+      }
+    })
+  }else if (data.homeName) {
+    goodDetailModel.find({"homeName":data.username}, function (err, docs) {
+      if (err){
+        console.log(err)
+      }else {
+        if (docs.length !== 0){
+          res.send({
+            code: 0,
+            message: '搜索商品成功',
+            success: true,
+            data: docs
+          })
+        }else {
+          res.send({
+            code: -1,
+            message: '商品不存在',
+            success: false,
+            data: docs
+          })
+        }
+      }
+    })
+  }else if(data.id == '' && data.homeName == '' ){
+    goodDetailModel.find({}, function (err, docs) {
+      if (err){
+        console.log(err)
+      }else {
+        res.send({
+          code: 0,
+          message: '查询成功',
+          success: true,
+          data: docs
+        })
+      }
+    })
+  }else {
+    res.send({
+      code: 0,
+      message: '查询失败',
+      success: false,
+      data: []
+    })
+  }
+})
+
 //以旧换新
 router.get('/change', function (req, res) {
   findMongodbData(ChangeModel)
@@ -3006,7 +3100,7 @@ router.get('/orderList', function (req, res) {
 })
 //订单删除
 router.post('/deleteOrder', function (req, res) {
-  orderModel.remove({_id: req.body._id}, function (err, result) {
+  orderModel.remove({orderNumber: req.body.orderNumber}, function (err, result) {
     if (err) {
       console.log(err)
     }else {
