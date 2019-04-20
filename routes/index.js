@@ -3117,10 +3117,10 @@ router.post('/deleteOrder', function (req, res) {
 router.post('/searchOrder', function (req, res) {
   console.log(req.body)
   const data = req.body
-  console.log(data.id, data.username)
+  console.log(data.orderNumber, data.username)
   //都存在
-  if (data._id && data.username) {
-    orderModel.find({"id": data.id,"userName":data.username}, function (err, docs) {
+  if (data.orderNumber && data.username) {
+    orderModel.find({"orderNumber": data.orderNumber,"userName":data.username}, function (err, docs) {
       if (err){
         console.log(err)
       }else {
@@ -3141,8 +3141,8 @@ router.post('/searchOrder', function (req, res) {
         }
       }
     })
-  }else if (data.id) {
-    orderModel.find({"id": data.id}, function (err, docs) {
+  }else if (data.orderNumber) {
+    orderModel.find({"orderNumber": data.orderNumber}, function (err, docs) {
       console.log(docs)
       if (err){
         console.log(err)
@@ -3186,7 +3186,7 @@ router.post('/searchOrder', function (req, res) {
         }
       }
     })
-  }else if(data.id == '' && data.username == '' ){
+  }else if(data.orderNumber == '' && data.username == '' ){
     orderModel.find({}, function (err, docs) {
       if (err){
         console.log(err)
@@ -3228,6 +3228,28 @@ router.post('/getOrderList', function (req, res) {
     }
   })
 })
+//根据orderNumber查找
+router.post('/payDetailByOrderNumber', function (req, res) {
+  console.log(typeof req.body.orderNumberArray)
+  orderModel.find({orderNumber:{ $in: req.body.orderNumberArray }}, function (err, data) {
+    if (err) {
+      console.log(err)
+    }else {
+      res.send({
+        "code": 200,
+        "success": true,
+        "msg": '数据请求成功',
+        "count": data.length,
+        "data": data
+      })
+    }
+  })
+
+
+
+
+})
+//查看详情
 
 
 
