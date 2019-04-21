@@ -11,6 +11,7 @@ const goodDetailScheam = new mongoose.Schema({
     'homeTitle': String,
     'homePrice': String,
     'homeValue': String,
-    'Images': Array
+    'Images': Array,
+    'publishGoodTime': String
 })
 module.exports= mongoose.model('GoodDetail',goodDetailScheam, 'goodDetail')

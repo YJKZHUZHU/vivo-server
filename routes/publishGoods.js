@@ -334,7 +334,8 @@ router.post('/publishGoods', function (req, res) {
             'homeTitle': req.body.homeTitle,
             'homePrice': req.body.homePrice,
             'homeValue': 1,
-            'Images': detailIntroduction
+            'Images': detailIntroduction,
+            'publishGoodTime': req.body.publishGoodTime
         }
         if(req.body.classify >= 4){
             partClassify(req.body.classify,home)

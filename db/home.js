@@ -11,6 +11,7 @@ const HomeScheam = new mongoose.Schema({
     'homeTitle': String,
     'homePrice': String,
     'homeValue': String,
-    'Images': Array
+    'Images': Array,
+    'publishGoodTime': String
 })
 module.exports= mongoose.model('Home',HomeScheam, 'home')
