@@ -23,7 +23,7 @@ exports.randomCode = randomCode;
  */
 function sendCode(phone, code, callback) {
     var ACCOUNT_SID = '8aaf070868983fcb0168ae8e219502b3';
-    var AUTH_TOKEN = 'ee017c76a05e47afb59d47d49998b763';
+    var AUTH_TOKEN = '4f3b8cd7a4dd4d6fa09a8ec0bc5147e9';
     var Rest_URL = 'https://app.cloopen.com:8883';
     var AppID = '8aaf070868983fcb0168ae8e21f902ba';
     //1. 准备请求url
